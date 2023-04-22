@@ -19,37 +19,27 @@ current_time = time.strftime("%H:%M:%S", t)
 pyautogui.PAUSE = 0.01 # tentando rodar mais rapdo
 
 #IMG PATH
-bubble_img='bubble_1024x768_portosolo.PNG'
-#bubble_img='bubble_1024x768_vermilion.PNG'
+bubble_img='bubble_1024x768_vermilion.PNG'
 bar_img='bar_1024x768.PNG'
 fish_img='fish_1024x768.PNG'
 shiny_img='shiny_1024x768.PNG'
 krabby_img='krabby_1024x768.PNG'
 tentacool_img='tentacool_1024x768.PNG'
 hungry_img='hungry_1024x768.PNG'
-#hook_img='hook_1024x768.PNG'
 
 #POSITIONS
 #FISHING_POSITIONS = [(543, 295),(543, 295)] #Mankey
-#FISHING_POSITIONS = [(270, 218),(270, 218)] #porto
-#FISHING_POSITIONS = [(386, 374),(386, 374)] #portosolo
-#IMG_BUBBLE_SIZE = (44,48) #Mankey
-#FISHING_POSITIONS = [(388, 100),(388, 100)] #Aero
-#IMG_BUBBLE_SIZE = (42,47) #Aero
-###FISHING_POSITIONS = [(347, 451),(347, 451)] #GYM PLANTA
-###IMG_BUBBLE_SIZE = (44,47) #GYN PLANTA
-FISHING_POSITIONS = [(542, 100),(542, 100)] #porto
-IMG_BUBBLE_SIZE = (44,47) #Mankey
-
+FISHING_POSITIONS = [(553, 265),(553, 265)] #porto
+IMG_BUBBLE_SIZE = (25,28) #Mankey
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,13,21)
-#HOOK_REGION = (557,312,21,21)
+HOOK_REGION = (557,312,21,21)
 
 def set_fishing_rod():
     area = random.choice(FISHING_POSITIONS)
     area_center = pyautogui.center(area+IMG_BUBBLE_SIZE)
     pyautogui.moveTo(area_center)
-    sleep(0.5)
+    sleep(1)
     my_keyboard.press('NUNLOCK')
     return area
 
@@ -62,7 +52,7 @@ def wait_bubble(fishing_position):
             break
 
 def minigame():
-    sleep(0.5)
+    sleep(1)
     fish = True
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
@@ -85,25 +75,25 @@ def kill_shiny():
     while shiny != None:
         shiny = pyautogui.locateOnScreen(shiny_img, confidence=0.9)
         if shiny != None:
-            my_keyboard.press('backspace') # Use medicine on pokémon
-            sleep(0.5)
+            #my_keyboard.press('backspace') # Use medicine on pokémon
+            #sleep(0.1)
             #my_keyboard.press('F7') # Mamaragan
-            my_keyboard.press('F9') # Swords Dance
-            sleep(0.5)
-            my_keyboard.press('F6') # Discharge / Air Slash
-            sleep(0.5)
-            my_keyboard.press('F2') 
-            sleep(0.5)
+            #my_keyboard.press('F4') # Swords Dance
+            #sleep(0.1)
+            #my_keyboard.press('F7') # Discharge / Air Slash
+            #sleep(0.1)
+            #my_keyboard.press('F8') 
+            #sleep(0.1)
             #my_keyboard.press('F5')
-            #sleep(6)
-            ball_tentacool()
-            ball_krabby()
+            #sleep(0.1)
+            #ball_tentacool()
+            #ball_krabby()
             break
         else:
             break
 
 def ball_tentacool():
-    sleep(1)
+    sleep(0.5)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     tentacool = True
@@ -115,13 +105,13 @@ def ball_tentacool():
             sleep(1)
             my_keyboard.press('F11')
             print(current_time,': Shiny Tentacool defeated!')
-            sleep(0.5)
+            sleep(1)
             mouseDown(tentacool.left, tentacool.top)
             mouseUp()
             break
 
 def ball_krabby():
-    sleep(1)
+    sleep(0.5)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     krabby = True
@@ -133,7 +123,7 @@ def ball_krabby():
             sleep(1)
             my_keyboard.press('F12')
             print(current_time,': Shiny Krabby defeated!')
-            sleep(0.5)
+            sleep(1)
             mouseDown(krabby.left, krabby.top)
             mouseUp()
             break
@@ -152,8 +142,7 @@ def feed_pokemon():
             break
 
 keyboard.wait('p')
-sleep(1)
-    
+
 print(current_time, ": Started fishing")
 
 while True:
@@ -161,7 +150,9 @@ while True:
     fishing_position = set_fishing_rod()
     wait_bubble(fishing_position)
     minigame()
-    kill_shiny()
+    #kill_shiny()
+    ball_krabby()
+    ball_tentacool
     feed_pokemon()
     sleep(3)
     my_keyboard.press('ESC')
