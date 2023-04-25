@@ -37,7 +37,7 @@ current_time = time.strftime("%H:%M:%S", t)
 
 today_var = datetime.date.today()
 today_text = today_var.strftime("%d%m%Y")
-log="logs/log_{}.txt".format(today_text)
+log="logs/{}.txt".format(today_text)
 
 def set_fishing_rod():
     area = FISHING_POSITIONS
