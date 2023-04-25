@@ -19,8 +19,8 @@ current_time = time.strftime("%H:%M:%S", t)
 pyautogui.PAUSE = 0.01 # tentando rodar mais rapdo
 
 #IMG PATH
-bubble_img='bubble_1024x768_portosolo.PNG'
-#bubble_img='bubble_1024x768_vermilion.PNG'
+#bubble_img='bubble_1024x768_portosolo.PNG'
+bubble_img='bubble_1024x768_vermilion.PNG'
 bar_img='bar_1024x768.PNG'
 fish_img='fish_1024x768.PNG'
 shiny_img='shiny_1024x768.PNG'
@@ -38,7 +38,7 @@ hungry_img='hungry_1024x768.PNG'
 #IMG_BUBBLE_SIZE = (42,47) #Aero
 ###FISHING_POSITIONS = [(347, 451),(347, 451)] #GYM PLANTA
 ###IMG_BUBBLE_SIZE = (44,47) #GYN PLANTA
-FISHING_POSITIONS = [(542, 100),(542, 100)] #porto
+FISHING_POSITIONS = [(397, 342),(397, 342)] #porto
 IMG_BUBBLE_SIZE = (44,47) #Mankey
 
 MINIGAME_REGION_BAR = (190,478,15,42)
