@@ -13,24 +13,28 @@ import threading
 #pip install Pillow
 #pip install opencv-python
 
+#27/04/2023 - 1a noite pescando sozinho
+#04:08 You caught a Pokémon! (Krabby).
+#04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
+
 pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
-FISHING_POSITIONS = (553, 148)
+FISHING_POSITIONS = (280, 382)
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
 HOOK_REGION = (553,148,21,21)
 
 #IMG PATH
-bubble_img=f'images/{}/bubble.PNG'.format(RESOLUTION)
-bar_img=f'images/{}/bar.PNG'.format(RESOLUTION)
-fish_img=f'images/{}/fish_bin.PNG'.format(RESOLUTION)
-shiny_img=f'images/{}/shiny.PNG'.format(RESOLUTION)
-krabby_img=f'images/{}/krabby.PNG'.format(RESOLUTION)
-tentacool_img=f'images/{}/tentacool.PNG'.format(RESOLUTION)
-hungry_img=f'images/{}/hungry.PNG'.format(RESOLUTION)
-hook_img=f'images/{}/hook.PNG'.format(RESOLUTION)
+bubble_img='images/{}/bubble.PNG'.format(RESOLUTION)
+bar_img='images/{}/bar.PNG'.format(RESOLUTION)
+fish_img='images/{}/fish_bin.PNG'.format(RESOLUTION)
+shiny_img='images/{}/shiny.PNG'.format(RESOLUTION)
+krabby_img='images/{}/krabby.PNG'.format(RESOLUTION)
+tentacool_img='images/{}/tentacool.PNG'.format(RESOLUTION)
+hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
+hook_img='images/{}/hook.PNG'.format(RESOLUTION)
 
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
@@ -77,7 +81,7 @@ def minigame():
     return texto
 
 def kill_shiny():
-    #sleep(0.2)
+    sleep(2)
     shiny = True
     while shiny != None:
         shiny = pyautogui.locateOnScreen(shiny_img, confidence=0.9)
@@ -89,13 +93,18 @@ def kill_shiny():
             sleep(0.1)
             my_keyboard.press('backspace') # Use medicine on pokémon
             sleep(0.1)
-            my_keyboard.press('F9') # Swords Dance
+            my_keyboard.press('F7') # Swords Dance
             sleep(0.1)
             my_keyboard.press('F6') # Air Slash
             sleep(0.1)
-            my_keyboard.press('F2') # Air Cutter
+            my_keyboard.press('F4') # X-Scissor
             sleep(0.1)
+            my_keyboard.press('F5') # Wing Attack
+            sleep(1)
+            #my_keyboard.press('F4') # Fury Cutter
+            #sleep(0.1)
             ball_tentacool()
+            sleep(0.1)
             ball_krabby()
             break
         else:
@@ -103,12 +112,11 @@ def kill_shiny():
 
 def ball_tentacool():
     sleep(1)
-    #print('ball_tentacool activated')
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     tentacool = True
     while tentacool != None:
-        tentacool = pyautogui.locateOnScreen(tentacool_img, confidence=0.85)
+        tentacool = pyautogui.locateOnScreen(tentacool_img, confidence=0.88)
         if tentacool != None:
             tentacool_center = pyautogui.center(tentacool)
             pyautogui.moveTo(tentacool_center)
@@ -121,12 +129,10 @@ def ball_tentacool():
             mouseUp()
             with open(log, "a") as log_out:
                 log_out.write(texto)
-            #set_fishing_rod()
             break
 
 def ball_krabby():
     sleep(1)
-    #print('ball_krabby activated')
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     krabby = True
@@ -144,18 +150,17 @@ def ball_krabby():
             mouseUp()
             with open(log, "a") as log_out:
                 log_out.write(texto)
-            #set_fishing_rod()
             break
 
 def some_actions():
     check_hook()
     sleep(0.5)
     feed_pokemon()
-    #my_keyboard.press('esc')
+    my_keyboard.press('esc')
     my_keyboard.press('tab')
 
 def check_hook():
-    sleep(10)
+    sleep(15)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     hook = True
@@ -174,7 +179,7 @@ def feed_pokemon():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while True:
-        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.9, region=(982,99,17,20))
+        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.91, region=(982,236,17,20))
         if hungry != None:
             texto = "{}: Feeding pokémon...\n".format(current_time)
             print(current_time,': Feeding pokémon...')
