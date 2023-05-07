@@ -12,7 +12,10 @@ fish_img='fish_1024x768_binarizada.PNG'
 hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
 krabby_img='krabby_1024x768.PNG'
 tentacool_img='images/{}/tentacool1.PNG'.format(RESOLUTION)
-hook_img='hook_1024x768.PNG'
+hook_img='images/{}/hook.PNG'.format(RESOLUTION)
+feebas_img='images/{}/feebas.PNG'.format(RESOLUTION)
+giant_karp_img='images/{}/giant_karp.PNG'.format(RESOLUTION)
+shiny_giant_karp='images/{}/shiny_giant_karp.PNG'.format(RESOLUTION)
 
 
 #POSITIONS
@@ -38,16 +41,20 @@ while True:
     bubble = pyautogui.locateOnScreen(bubble_img, confidence=0.7)#, region=FISHING_POSITIONS+IMG_BUBBLE_SIZE)
     #bubble = pyautogui.locateOnScreen(bubble_img, confidence=0.7, region=(x, y, largura, altura))   
     #bar = pyautogui.locateOnScreen(bar_img, confidence=0.7)
-    #hook = pyautogui.locateOnScreen(hook_img, confidence=0.5)
+    hook = pyautogui.locateOnScreen(hook_img, confidence=0.5)
 
     #fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True)
     hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.91, region=(982,236,17,20))
     #krabby = pyautogui.locateOnScreen(krabby_img, confidence=0.7)
     tentacool = pyautogui.locateOnScreen(tentacool_img, confidence=0.91)
+    feebas = pyautogui.locateOnScreen(feebas_img, confidence=0.8)
+    giant_karp = pyautogui.locateOnScreen(giant_karp_img, confidence=0.90)
+    print(pyautogui.position())
     print("bubble",bubble)
+    print("giant_karp",giant_karp)
     #print("bar",bar)
     #print("fish",fish)
-    #print("hook",hook)
+    print("hook",hook)
     print("hungry",hungry)
     #print("krabby",krabby)
     print("tentacool",tentacool)
