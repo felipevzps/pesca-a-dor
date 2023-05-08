@@ -36,6 +36,7 @@ hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
 hook_img='images/{}/hook2.PNG'.format(RESOLUTION)
 giant_karp_img='images/{}/giant_karp.PNG'.format(RESOLUTION)
 shiny_giant_karp_img='images/{}/shiny_giant_karp.PNG'.format(RESOLUTION)
+shiny_karp_img='images/{}/shiny_karp.PNG'.format(RESOLUTION)
 feebas_img='images/{}/feebas.PNG'.format(RESOLUTION)
 
 t = time.localtime()
@@ -85,12 +86,13 @@ def revive():
     sleep(0.5)
     pyautogui.moveTo(POKE_POSITION)
     my_keyboard.press('F2')
-    sleep(0.5)
+    sleep(0.8)
+    my_keyboard.press('F2')
+    sleep(0.3)
     my_keyboard.press('F2')
     sleep(1)
     my_keyboard.press('esc')
     pyautogui.moveTo(current_position)
-    sleep(1)
 
 def kill_shiny():
     sleep(0.5)#2 pra tentacool
@@ -114,7 +116,8 @@ def kill_shiny():
             my_keyboard.press('F5') # Electrify
             sleep(1)
             revive()
-            ball_magikarp()
+            ball_giant_magikarp()
+            #ball_magikarp()
             sleep(0.1)
 
 def kill_giant_karp():
@@ -134,7 +137,7 @@ def kill_giant_karp():
             my_keyboard.press('F4') # X-Scissor
             sleep(0.1)
             my_keyboard.press('F5') # Wing Attack
-            sleep(1)
+            sleep(0.5)
             revive()
 
 def kill_feebas():
@@ -157,7 +160,7 @@ def kill_feebas():
             sleep(1)
             revive()
 
-def ball_magikarp():
+def ball_giant_magikarp():
     sleep(1)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
@@ -166,6 +169,34 @@ def ball_magikarp():
         shiny_giant_karp = pyautogui.locateOnScreen(shiny_giant_karp_img, confidence=0.93)
         if shiny_giant_karp != None:
             magikarp_center = pyautogui.center(shiny_giant_karp)
+            #pyautogui.moveTo(magikarp_center)
+            pyautogui.moveTo(shiny_giant_karp.left + 15, shiny_giant_karp.top + 15)
+            sleep(0.7)
+            pyautogui.click(button="right")
+            sleep(1)
+            my_keyboard.press('down')
+            sleep(0.8)
+            pyautogui.moveTo(magikarp_center)
+            sleep(0.4)
+            my_keyboard.press('F12')
+            #texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
+            print(current_time,': Shiny Giant Magikarp defeated!')
+            sleep(1)
+            mouseDown(shiny_giant_karp.left, shiny_giant_karp.top)
+            mouseUp()
+            #with open(log, "a") as log_out:
+                #log_out.write(texto)
+            break
+
+def ball_magikarp():
+    sleep(1)
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    shiny_karp = True
+    while shiny_karp != None:
+        shiny_karp = pyautogui.locateOnScreen(shiny_karp_img, confidence=0.93)
+        if shiny_karp != None:
+            magikarp_center = pyautogui.center(shiny_karp)
             pyautogui.moveTo(magikarp_center)
             sleep(0.7)
             pyautogui.click(button="right")
@@ -175,13 +206,13 @@ def ball_magikarp():
             pyautogui.moveTo(magikarp_center)
             sleep(0.4)
             my_keyboard.press('F12')
-            texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
-            print(current_time,': Shiny Giant Magikarp defeated!')
+            #texto = "{}: Shiny Magikarp defeated!\n".format(current_time)
+            print(current_time,': Shiny Magikarp defeated!')
             sleep(1)
-            mouseDown(shiny_giant_karp.left, shiny_giant_karp.top)
+            mouseDown(shiny_karp.left, shiny_karp.top)
             mouseUp()
-            with open(log, "a") as log_out:
-                log_out.write(texto)
+            #with open(log, "a") as log_out:
+                #log_out.write(texto)
             break
 
 def kill_pokes():
@@ -193,11 +224,11 @@ def some_actions():
     check_hook()
     sleep(0.5)
     feed_pokemon()
-    #my_keyboard.press('F2')
-    #my_keyboard.press('tab')
+    my_keyboard.press('esc')
+    my_keyboard.press('tab')
 
 def check_hook():
-    sleep(5)
+    sleep(2)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     hook = True
@@ -227,8 +258,11 @@ def feed_pokemon():
         else:
             break
 
-threadSomeActions = threading.Thread(target=some_actions)
+#inverti a ordem, check_hook tm q ser dps de matar shiny
+#fazer push se der certo dessa forma
+#so vai faltar logar nas contas
 threadKillShiny = threading.Thread(target=kill_pokes)
+threadSomeActions = threading.Thread(target=some_actions)
 #threadSomeActions.start()
 
 #texto = "{}: Started fishing\n".format(current_time)
@@ -238,6 +272,13 @@ threadKillShiny = threading.Thread(target=kill_pokes)
 print(current_time, ": Started fishing")
 
 keyboard.wait('p')
+
+#def login_account():
+#def soltar_pokemon():
+#def usar elixir():
+#def pescar():
+    #começa contar 5 minutos
+#def deslogar():
 
 while True:
     t = time.localtime()
@@ -250,17 +291,18 @@ while True:
 
     fishing_position = set_fishing_rod()
 
-    if not threadSomeActions.is_alive():
-        threadSomeActions = threading.Thread(target=some_actions)
-        threadSomeActions.start()
-
     if not threadKillShiny.is_alive():
         threadKillShiny = threading.Thread(target=kill_pokes)
         threadKillShiny.start()
+    threadKillShiny.join()
 
+    if not threadSomeActions.is_alive():
+        threadSomeActions = threading.Thread(target=some_actions)
+        threadSomeActions.start()
     #Wait until the thread terminates    
     threadSomeActions.join()
-    threadKillShiny.join()
+
+    
     
     wait_bubble(fishing_position)
     minigame()

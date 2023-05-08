@@ -94,7 +94,6 @@ def ball_tentacool():
 
 def ball_krabby():
     sleep(1)
-    print('ball_krabby activated')
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     krabby = True
@@ -163,7 +162,7 @@ def feed_pokemon():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while True:
-        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.9, region=(982,99,17,20))
+        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.9, region=(982,236,17,20))
         if hungry != None:
             print(current_time,': Feeding pokémon...')
             my_keyboard.press('caps')
