@@ -214,6 +214,11 @@ def kill_pokes():
     kill_feebas()
 
 def some_actions():
+    #01/06/2023
+    #o bot tenta pescar enquanto esta batendo revive
+    #tentando corrigir - forcando ele esperar a thread KillShiny terminar
+    #testar mais, porem ja acho que deu certo! - 15h30
+    threadKillShiny.join()
     check_hook()
     sleep(0.5)
     feed_pokemon()
