@@ -17,14 +17,18 @@ import threading
 #04:08 You caught a Pokémon! (Krabby).
 #04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
 
-pyautogui.PAUSE = 0.01 #default = 0.1
+pyautogui.PAUSE = 0.01 #default = 0.1 
 
 RESOLUTION='1024x768'
 FISHING_POSITIONS = (280, 382)
+#FISHING_POSITIONS = (514, 266)
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
 HOOK_REGION = (553,148,21,21)
+POKEBALL_POSITION = (838, 237)
+POKE_POSITION = (410, 242)
+#POKE_POSITION = (373, 282)
 
 #IMG PATH
 bubble_img='images/{}/bubble.PNG'.format(RESOLUTION)
@@ -81,7 +85,7 @@ def minigame():
     return texto
 
 def kill_shiny():
-    sleep(2)
+    sleep(0.5)
     shiny = True
     while shiny != None:
         shiny = pyautogui.locateOnScreen(shiny_img, confidence=0.9)
@@ -93,22 +97,22 @@ def kill_shiny():
             sleep(0.1)
             my_keyboard.press('backspace') # Use medicine on pokémon
             sleep(0.1)
-            my_keyboard.press('F7') # Swords Dance
+            my_keyboard.press('F7') # Mamaragan
             sleep(0.1)
-            my_keyboard.press('F6') # Air Slash
+            my_keyboard.press('F6') # Discharge
             sleep(0.1)
-            my_keyboard.press('F4') # X-Scissor
+            my_keyboard.press('F4') # Thunder Wrath
             sleep(0.1)
-            my_keyboard.press('F5') # Wing Attack
+            my_keyboard.press('F5') # Electrify
             sleep(1)
-            #my_keyboard.press('F4') # Fury Cutter
-            #sleep(0.1)
+            revive()
+            sleep(0.2)
             ball_tentacool()
             sleep(0.1)
             ball_krabby()
-            break
-        else:
-            break
+        #    break
+        #else:
+        #    break
 
 def ball_tentacool():
     sleep(1)
@@ -160,7 +164,7 @@ def some_actions():
     my_keyboard.press('tab')
 
 def check_hook():
-    sleep(12)
+    sleep(6)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     hook = True
@@ -190,6 +194,25 @@ def feed_pokemon():
         else:
             break
 
+def revive():
+    sleep(0.2)
+    pyautogui.moveTo(POKEBALL_POSITION)
+    pyautogui.click(button="right")
+    my_keyboard.press('F1')
+    pyautogui.click()
+    pyautogui.click(button="right")
+    sleep(0.1)
+    pyautogui.moveTo(POKE_POSITION)
+    my_keyboard.press('F2')
+    sleep(0.2)
+    my_keyboard.press('F2')
+    sleep(0.2)
+    my_keyboard.press('F2')
+    sleep(0.2)
+    my_keyboard.press('F2')
+    sleep(0.7)
+    my_keyboard.press('esc')
+
 threadKillShiny = threading.Thread(target=kill_shiny)
 #threadKillShiny.start()
 
@@ -215,20 +238,22 @@ while True:
 
     fishing_position = set_fishing_rod()
 
+    if not threadKillShiny.is_alive():
+        threadKillShiny = threading.Thread(target=kill_shiny)
+        threadKillShiny.start()
+    
+    #Wait until the thread terminates  
+    threadKillShiny.join()
+
     if not threadSomeActions.is_alive():
         threadSomeActions = threading.Thread(target=some_actions)
         threadSomeActions.start()
 
-    if not threadKillShiny.is_alive():
-        threadKillShiny = threading.Thread(target=kill_shiny)
-        threadKillShiny.start()
-
     #Wait until the thread terminates    
     threadSomeActions.join()
-    threadKillShiny.join()
-
+    
+    sleep(0.5)
     wait_bubble(fishing_position)
-
     texto_minigame = minigame()
     texto_log_minigame = "{}: {}\n".format(current_time, texto_minigame)
 

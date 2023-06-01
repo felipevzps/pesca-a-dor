@@ -49,12 +49,13 @@ log="logs/{}.txt".format(today_text)
 def set_fishing_rod():
     area = FISHING_POSITIONS
     area_center = pyautogui.center(area+IMG_BUBBLE_SIZE)
-    pyautogui.moveTo(area_center)
-    sleep(1.5)
+    pyautogui.moveTo(area_center, duration=0.3)
+    #sleep(1.5)
     my_keyboard.press('NUNLOCK')
     return area
 
 def wait_bubble(fishing_position):
+    sleep(2)
     while True:
         bubble = pyautogui.locateOnScreen(bubble_img, confidence=0.7, region=fishing_position+IMG_BUBBLE_SIZE)
         if bubble != None:
@@ -78,21 +79,23 @@ def minigame():
 
 def revive():
     current_position = pyautogui.position()
-    pyautogui.moveTo(POKEBALL_POSITION)
+    pyautogui.moveTo(POKEBALL_POSITION, duration=0.3)
     pyautogui.click(button="right")
     my_keyboard.press('F1')
     pyautogui.click()
     pyautogui.click(button="right")
-    sleep(0.5)
-    pyautogui.moveTo(POKE_POSITION)
+    sleep(0.1)
+    pyautogui.moveTo(POKE_POSITION, duration=0.3)
     my_keyboard.press('F2')
-    sleep(0.8)
+    sleep(0.2)
     my_keyboard.press('F2')
-    sleep(0.3)
+    sleep(0.2)
     my_keyboard.press('F2')
-    sleep(1)
+    sleep(0.2)
+    my_keyboard.press('F2')
+    sleep(0.2)
     my_keyboard.press('esc')
-    pyautogui.moveTo(current_position)
+    pyautogui.moveTo(current_position, duration=0.3)
 
 def kill_shiny():
     sleep(0.5)#2 pra tentacool
@@ -104,8 +107,6 @@ def kill_shiny():
             print(current_time,': Wild Shiny Giant Magikarp appeared!')
             #with open(log, "a") as log_out:
                 #log_out.write(texto)
-            #sleep(0.1)
-            #my_keyboard.press('backspace') # Use medicine on pokémon
             sleep(0.1)
             my_keyboard.press('F7') # Mamaragan
             sleep(0.1)
@@ -114,12 +115,10 @@ def kill_shiny():
             my_keyboard.press('F4') # Thunder Wrath
             sleep(0.1)
             my_keyboard.press('F5') # Electrify
-            sleep(1)
+            sleep(0.5)
             revive()
             ball_giant_magikarp()
-            #ball_magikarp()
-            sleep(0.1)
-
+            
 def kill_giant_karp():
     sleep(0.5)
     giant_karp = True
@@ -128,8 +127,6 @@ def kill_giant_karp():
         if giant_karp != None:
             print(current_time,': Wild Giant Magikarp appeared!')
             sleep(0.1)
-            my_keyboard.press('backspace') # Use medicine on pokémon
-            sleep(0.1)
             my_keyboard.press('F7') # Swords Dance
             sleep(0.1)
             my_keyboard.press('F6') # Air Slash
@@ -137,7 +134,7 @@ def kill_giant_karp():
             my_keyboard.press('F4') # X-Scissor
             sleep(0.1)
             my_keyboard.press('F5') # Wing Attack
-            sleep(0.5)
+            sleep(0.1)
             revive()
 
 def kill_feebas():
@@ -148,8 +145,6 @@ def kill_feebas():
         if feebas != None:
             print(current_time,': Wild feebas appeared!')
             sleep(0.1)
-            my_keyboard.press('backspace') # Use medicine on pokémon
-            sleep(0.1)
             my_keyboard.press('F7') # Swords Dance
             sleep(0.1)
             my_keyboard.press('F6') # Air Slash
@@ -157,7 +152,7 @@ def kill_feebas():
             my_keyboard.press('F4') # X-Scissor
             sleep(0.1)
             my_keyboard.press('F5') # Wing Attack
-            sleep(1)
+            sleep(0.1)
             revive()
 
 def ball_giant_magikarp():
@@ -166,23 +161,21 @@ def ball_giant_magikarp():
     current_time = time.strftime("%H:%M:%S", t)
     shiny_giant_karp = True
     while shiny_giant_karp != None:
-        shiny_giant_karp = pyautogui.locateOnScreen(shiny_giant_karp_img, confidence=0.93)
+        shiny_giant_karp = pyautogui.locateOnScreen(shiny_giant_karp_img, confidence=0.95)
         if shiny_giant_karp != None:
-            magikarp_center = pyautogui.center(shiny_giant_karp)
-            #pyautogui.moveTo(magikarp_center)
-            pyautogui.moveTo(shiny_giant_karp.left + 15, shiny_giant_karp.top + 15)
-            sleep(0.7)
+            #texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
+            print(current_time,': Shiny Giant Magikarp defeated!')
+            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.3)
+            #sleep(0.7)
             pyautogui.click(button="right")
             sleep(1)
             my_keyboard.press('down')
-            sleep(0.8)
-            pyautogui.moveTo(magikarp_center)
-            sleep(0.4)
+            sleep(0.7)
+            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.3)
+            #sleep(0.2)
             my_keyboard.press('F12')
-            #texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
-            print(current_time,': Shiny Giant Magikarp defeated!')
-            sleep(1)
-            mouseDown(shiny_giant_karp.left, shiny_giant_karp.top)
+            sleep(0.2)
+            mouseDown(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25)
             mouseUp()
             #with open(log, "a") as log_out:
                 #log_out.write(texto)
@@ -196,18 +189,18 @@ def ball_magikarp():
     while shiny_karp != None:
         shiny_karp = pyautogui.locateOnScreen(shiny_karp_img, confidence=0.93)
         if shiny_karp != None:
+            #texto = "{}: Shiny Magikarp defeated!\n".format(current_time)
+            print(current_time,': Shiny Magikarp defeated!')
             magikarp_center = pyautogui.center(shiny_karp)
-            pyautogui.moveTo(magikarp_center)
-            sleep(0.7)
+            pyautogui.moveTo(magikarp_center, duration=0.3)
+            #sleep(0.7)
             pyautogui.click(button="right")
             sleep(1)
             my_keyboard.press('down')
             sleep(0.8)
-            pyautogui.moveTo(magikarp_center)
-            sleep(0.4)
+            pyautogui.moveTo(magikarp_center, duration=0.3)
+            #sleep(0.4)
             my_keyboard.press('F12')
-            #texto = "{}: Shiny Magikarp defeated!\n".format(current_time)
-            print(current_time,': Shiny Magikarp defeated!')
             sleep(1)
             mouseDown(shiny_karp.left, shiny_karp.top)
             mouseUp()
@@ -302,7 +295,5 @@ while True:
     #Wait until the thread terminates    
     threadSomeActions.join()
 
-    
-    
     wait_bubble(fishing_position)
     minigame()

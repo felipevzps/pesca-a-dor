@@ -15,10 +15,13 @@ import threading
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
 
+#F1 REVIVE
+#F2 MOVE POKE
+
 pyautogui.PAUSE = 0.01 #diminuindo pause, default = 0.1
 
 RESOLUTION='1024x768'
-FISHING_POSITIONS = (514, 149 )
+FISHING_POSITIONS = (319, 383)
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
@@ -102,7 +105,7 @@ def ball_krabby():
         if krabby != None:
             krabby_center = pyautogui.center(krabby)
             pyautogui.moveTo(krabby_center)
-            sleep(0.2)
+            #sleep(0.2)
             my_keyboard.press('F12')
             print(current_time,': Shiny Krabby defeated!')
             sleep(0.2)
@@ -162,7 +165,7 @@ def feed_pokemon():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while True:
-        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.9, region=(982,236,17,20))
+        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.92, region=(982,236,17,20))
         if hungry != None:
             print(current_time,': Feeding pokémon...')
             my_keyboard.press('caps')
