@@ -157,6 +157,7 @@ def ball_krabby():
             break
 
 def some_actions():
+    threadKillShiny.join()
     check_hook()
     sleep(0.5)
     feed_pokemon()
@@ -195,14 +196,15 @@ def feed_pokemon():
             break
 
 def revive():
-    sleep(0.2)
-    pyautogui.moveTo(POKEBALL_POSITION)
+    current_position = pyautogui.position()
+    pyautogui.moveTo(POKEBALL_POSITION, duration=0.3)
     pyautogui.click(button="right")
     my_keyboard.press('F1')
     pyautogui.click()
+    pyautogui.click()
     pyautogui.click(button="right")
     sleep(0.1)
-    pyautogui.moveTo(POKE_POSITION)
+    pyautogui.moveTo(POKE_POSITION, duration=0.3)
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('F2')
@@ -210,8 +212,9 @@ def revive():
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('F2')
-    sleep(0.7)
+    sleep(0.2)
     my_keyboard.press('esc')
+    pyautogui.moveTo(current_position, duration=0.3)
 
 threadKillShiny = threading.Thread(target=kill_shiny)
 #threadKillShiny.start()

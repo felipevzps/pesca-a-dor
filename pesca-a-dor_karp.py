@@ -16,7 +16,9 @@ import threading
 pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
-FISHING_POSITIONS = (319, 383)
+#FISHING_POSITIONS = (319, 383) #hamlin esgoto
+#FISHING_POSITIONS = (397, 343) #cerulean perto cp
+FISHING_POSITIONS = (397, 305) #pewter caminho cerulean
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
@@ -49,7 +51,7 @@ log="logs/{}.txt".format(today_text)
 def set_fishing_rod():
     area = FISHING_POSITIONS
     area_center = pyautogui.center(area+IMG_BUBBLE_SIZE)
-    pyautogui.moveTo(area_center, duration=0.3)
+    pyautogui.moveTo(area_center, duration=0.1)
     #sleep(1.5)
     my_keyboard.press('NUNLOCK')
     return area
@@ -79,13 +81,14 @@ def minigame():
 
 def revive():
     current_position = pyautogui.position()
-    pyautogui.moveTo(POKEBALL_POSITION, duration=0.3)
+    pyautogui.moveTo(POKEBALL_POSITION, duration=0.1)
     pyautogui.click(button="right")
     my_keyboard.press('F1')
     pyautogui.click()
+    pyautogui.click()
     pyautogui.click(button="right")
     sleep(0.1)
-    pyautogui.moveTo(POKE_POSITION, duration=0.3)
+    pyautogui.moveTo(POKE_POSITION, duration=0.1)
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('F2')
@@ -95,7 +98,7 @@ def revive():
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('esc')
-    pyautogui.moveTo(current_position, duration=0.3)
+    pyautogui.moveTo(current_position, duration=0.1)
 
 def kill_shiny():
     sleep(0.5)#2 pra tentacool
@@ -165,13 +168,13 @@ def ball_giant_magikarp():
         if shiny_giant_karp != None:
             #texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
             print(current_time,': Shiny Giant Magikarp defeated!')
-            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.3)
+            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.1)
             #sleep(0.7)
             pyautogui.click(button="right")
             sleep(1)
             my_keyboard.press('down')
             sleep(0.7)
-            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.3)
+            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.1)
             #sleep(0.2)
             my_keyboard.press('F12')
             sleep(0.2)
@@ -192,13 +195,13 @@ def ball_magikarp():
             #texto = "{}: Shiny Magikarp defeated!\n".format(current_time)
             print(current_time,': Shiny Magikarp defeated!')
             magikarp_center = pyautogui.center(shiny_karp)
-            pyautogui.moveTo(magikarp_center, duration=0.3)
+            pyautogui.moveTo(magikarp_center, duration=0.1)
             #sleep(0.7)
             pyautogui.click(button="right")
             sleep(1)
             my_keyboard.press('down')
             sleep(0.8)
-            pyautogui.moveTo(magikarp_center, duration=0.3)
+            pyautogui.moveTo(magikarp_center, duration=0.1)
             #sleep(0.4)
             my_keyboard.press('F12')
             sleep(1)
@@ -214,10 +217,6 @@ def kill_pokes():
     kill_feebas()
 
 def some_actions():
-    #01/06/2023
-    #o bot tenta pescar enquanto esta batendo revive
-    #tentando corrigir - forcando ele esperar a thread KillShiny terminar
-    #testar mais, porem ja acho que deu certo! - 15h30
     threadKillShiny.join()
     check_hook()
     sleep(0.5)
@@ -256,9 +255,6 @@ def feed_pokemon():
         else:
             break
 
-#inverti a ordem, check_hook tm q ser dps de matar shiny
-#fazer push se der certo dessa forma
-#so vai faltar logar nas contas
 threadKillShiny = threading.Thread(target=kill_pokes)
 threadSomeActions = threading.Thread(target=some_actions)
 #threadSomeActions.start()
