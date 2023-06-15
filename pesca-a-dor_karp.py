@@ -16,15 +16,15 @@ import threading
 pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
-#FISHING_POSITIONS = (319, 383) #hamlin esgoto
-#FISHING_POSITIONS = (397, 343) #cerulean perto cp
-FISHING_POSITIONS = (397, 305) #pewter caminho cerulean
+FISHING_POSITIONS = (319, 383) #hamlin esgoto
+POKE_POSITION = (408, 243) #hamlin esgoto
+#FISHING_POSITIONS = (475, 227) #cerulean cp
+#POKE_POSITION = (375, 273) #cerulean cp
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
 HOOK_REGION = (401,389,21,21)
 POKEBALL_POSITION = (838, 237)
-POKE_POSITION = (408, 243)
 EMBAIXO_POKE_POSITION = (410, 317)
 
 #IMG PATH
@@ -217,6 +217,7 @@ def kill_pokes():
     kill_feebas()
 
 def some_actions():
+    #testar isso V
     threadKillShiny.join()
     check_hook()
     sleep(0.5)
@@ -225,6 +226,7 @@ def some_actions():
     my_keyboard.press('tab')
 
 def check_hook():
+    threadKillShiny.join()
     sleep(2)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)

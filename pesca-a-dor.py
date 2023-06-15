@@ -28,7 +28,6 @@ MINIGAME_REGION_FISH = (189,241,57,57)
 HOOK_REGION = (553,148,21,21)
 POKEBALL_POSITION = (838, 237)
 POKE_POSITION = (410, 242)
-#POKE_POSITION = (373, 282)
 
 #IMG PATH
 bubble_img='images/{}/bubble.PNG'.format(RESOLUTION)
@@ -165,6 +164,8 @@ def some_actions():
     my_keyboard.press('tab')
 
 def check_hook():
+    #testar isso V
+    threadKillShiny.join()
     sleep(6)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
