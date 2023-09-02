@@ -7,16 +7,6 @@ import my_keyboard
 import keyboard
 import threading
 
-#req
-#pip install pyautogui
-#pip install keyboard
-#pip install Pillow
-#pip install opencv-python
-
-#27/04/2023 - 1a noite pescando sozinho
-#04:08 You caught a Pokémon! (Krabby).
-#04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
-
 pyautogui.PAUSE = 0.01 #default = 0.1 
 
 RESOLUTION='1024x768'
