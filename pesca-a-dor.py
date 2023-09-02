@@ -10,12 +10,11 @@ import threading
 pyautogui.PAUSE = 0.01 #default = 0.1 
 
 RESOLUTION='1024x768'
-FISHING_POSITIONS = (280, 382)
+FISHING_POSITIONS = (280, 382) #hamlin bueiro
 #FISHING_POSITIONS = (514, 266)
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION_BAR = (190,478,15,42)
 MINIGAME_REGION_FISH = (189,241,57,57)
-HOOK_REGION = (553,148,21,21)
 POKEBALL_POSITION = (838, 237)
 POKE_POSITION = (410, 242)
 
@@ -99,9 +98,6 @@ def kill_shiny():
             ball_tentacool()
             sleep(0.1)
             ball_krabby()
-        #    break
-        #else:
-        #    break
 
 def ball_tentacool():
     sleep(1)
@@ -154,14 +150,13 @@ def some_actions():
     my_keyboard.press('tab')
 
 def check_hook():
-    #testar isso V
     threadKillShiny.join()
     sleep(6)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     hook = True
     while hook != None:
-        hook = pyautogui.locateOnScreen(hook_img, confidence=0.5)#, region=HOOK_REGION)
+        hook = pyautogui.locateOnScreen(hook_img, confidence=0.5)
         if hook == None:
             texto = "{}: Fixing fishing position...\n".format(current_time)
             print(current_time,': Fixing fishing position...')
