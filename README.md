@@ -32,9 +32,23 @@ Ensuring that your mouse is positioned accurately during this process is crucial
 
 ## Achievements
 
-> 27/04/2023 - 1st night 100% AFK
-> 
-> 04:08 You caught a Pokémon! (Krabby).
->
-> 04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
+```
+27/04/2023 - 1st night 100% AFK
+04:08 You caught a Pokémon! (Krabby).
+04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
+```
 
+```
+23:26 You caught a Pokémon! (Krabby).
+23:26 You've wasted: 200 Net Balls to catch it.
+```
+
+```
+05:47 You caught a Pokémon! (Krabby).
+05:47 You've wasted: 20 Net Balls to catch it.
+```
+
+```
+00:06 You caught a Pokémon! (Krabby).
+00:06 You've wasted: 499 Net Balls to catch it.
+```
