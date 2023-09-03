@@ -32,6 +32,8 @@ Ensuring that your mouse is positioned accurately during this process is crucial
 
 After getting and adding the coordinates in the code of [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot inside vscode, minimize the vscode and press `P` ingame to start fishing.
 
+![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
+
 ## Achievements
 
 ```
