@@ -2,7 +2,11 @@
 
 This document describes the operation and use of [pesca-a-dor](https://github.com/felipevzps/pesca-a-dor), developed to automate the fishing process in the [PxG](https://www.pokexgames.com/). This bot has been developed to `fish`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve the periodic fishing challenge` that appears on the screen every 5 minutes, allowing uninterrupted fishing.
 
+<div align="center">
+  
 ![](images/desafio_de_pesca.gif)
+
+</div>
 
 ## Requirements
 
