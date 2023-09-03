@@ -30,6 +30,8 @@ To acquire the coordinates for each of these positions, you must execute [locate
 
 Ensuring that your mouse is positioned accurately during this process is crucial for obtaining precise left and top coordinates for your defined screen positions.
 
+After getting and adding the coordinates in the code of [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot inside vscode, minimize the vscode and press `P` ingame to start fishing.
+
 ## Achievements
 
 ```
