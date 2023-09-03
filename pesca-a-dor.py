@@ -12,6 +12,9 @@ pyautogui.PAUSE = 0.01 #default = 0.1
 RESOLUTION='1024x768'
 
 FISHING_POSITIONS = (280, 382) #hamlin bueiro
+MINIGAME_REGION_BAR = (160,150,100,400)
+MINIGAME_REGION_FISH = (160,150,100,400)
+HUNGRY_POSITION = (982,236,17,20)
 IMG_BUBBLE_SIZE = (25,28)
 POKEBALL_POSITION = (838, 237)
 POKE_POSITION = (410, 242)
@@ -55,8 +58,8 @@ def minigame():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while fish != None:
-        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7)
-        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True)
+        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7, region=MINIGAME_REGION_BAR)
+        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True, region=MINIGAME_REGION_FISH)
         if bar != None and fish != None:
             texto = "Solving puzzle..."
             if bar.top > fish.top:
@@ -168,7 +171,7 @@ def feed_pokemon():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while True:
-        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.91, region=(982,236,17,20))
+        hungry = pyautogui.locateOnScreen(hungry_img, confidence=0.91, region=HUNGRY_POSITION)
         if hungry != None:
             texto = "{}: Feeding pokémon...\n".format(current_time)
             print(current_time,': Feeding pokémon...')
