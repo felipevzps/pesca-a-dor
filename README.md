@@ -21,6 +21,7 @@ Before proceeding, reduce your monitor resolution to `1024x768`. This step is es
 FISHING_POSITIONS = (280, 382)              # The location where the bait will be cast
 MINIGAME_REGION_BAR = (160,150,100,400)     # Minigame bar region
 MINIGAME_REGION_FISH = (160,150,100,400)    # Minigame fish region
+HUNGRY_POSITION = (982,236,17,20)           # Hungry region
 IMG_BUBBLE_SIZE = (25, 28)                  # The size of the bubble image
 POKEBALL_POSITION = (838, 237)              # The position of the Pokémon's Pokéball
 POKE_POSITION = (410, 242)                  # The position where the Pokémon will remain stationary
