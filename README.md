@@ -34,6 +34,20 @@ After getting and adding the coordinates in the code of [pesca-a-dor.py](https:/
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
+## Ingame hotkeys
+
+```
+Start fishing           = NumLock
+Use food on pokémon     = Caps
+Use medicine on pokémon = Backspace
+Stand still             = Tab
+Collect loot            = Escape
+Use revive              = F1
+Order pokémon           = F2
+Pokeball for tentacool  = F11
+Pokeball for krabby     = F12
+```
+
 ## Achievements
 
 ```
