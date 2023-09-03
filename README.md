@@ -18,10 +18,12 @@ pip install opencv-python
 Before proceeding, reduce your monitor resolution to `1024x768`. This step is essential for accurately obtaining screen coordinates for specific variables within the software. These variables include:
 
 ```python
-FISHING_POSITIONS = (280, 382)    # The location where the bait will be cast
-IMG_BUBBLE_SIZE = (25, 28)        # The size of the bubble image
-POKEBALL_POSITION = (838, 237)    # The position of the Pokémon's Pokéball
-POKE_POSITION = (410, 242)        # The position where the Pokémon will remain stationary
+FISHING_POSITIONS = (280, 382)              # The location where the bait will be cast
+MINIGAME_REGION_BAR = (160,150,100,400)     # Minigame bar region
+MINIGAME_REGION_FISH = (160,150,100,400)    # Minigame fish region
+IMG_BUBBLE_SIZE = (25, 28)                  # The size of the bubble image
+POKEBALL_POSITION = (838, 237)              # The position of the Pokémon's Pokéball
+POKE_POSITION = (410, 242)                  # The position where the Pokémon will remain stationary
 ```
 
 Please note the following:
