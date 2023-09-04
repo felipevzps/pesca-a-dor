@@ -12,8 +12,7 @@ pyautogui.PAUSE = 0.01 #default = 0.1
 RESOLUTION='1024x768'
 
 FISHING_POSITIONS = (280, 382) #hamlin bueiro
-MINIGAME_REGION_BAR = (160,150,100,400)
-MINIGAME_REGION_FISH = (160,150,100,400)
+MINIGAME_REGION = (160,150,100,400)
 HUNGRY_POSITION = (982,236,17,20)
 IMG_BUBBLE_SIZE = (25,28)
 POKEBALL_POSITION = (838, 237)
@@ -58,8 +57,8 @@ def minigame():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     while fish != None:
-        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7, region=MINIGAME_REGION_BAR)
-        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True, region=MINIGAME_REGION_FISH)
+        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7, region=MINIGAME_REGION)
+        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True, region=MINIGAME_REGION)
         if bar != None and fish != None:
             texto = "Solving puzzle..."
             if bar.top > fish.top:
