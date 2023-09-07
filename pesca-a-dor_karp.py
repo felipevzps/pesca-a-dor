@@ -21,8 +21,7 @@ POKE_POSITION = (408, 243) #hamlin esgoto
 #FISHING_POSITIONS = (475, 227) #cerulean cp
 #POKE_POSITION = (375, 273) #cerulean cp
 IMG_BUBBLE_SIZE = (25,28)
-MINIGAME_REGION_BAR = (190,478,15,42)
-MINIGAME_REGION_FISH = (189,241,57,57)
+MINIGAME_REGION = (160,150,100,400) 
 HOOK_REGION = (401,389,21,21)
 POKEBALL_POSITION = (838, 237)
 EMBAIXO_POKE_POSITION = (410, 317)
@@ -68,8 +67,8 @@ def minigame():
     sleep(1)
     fish = True
     while fish != None:
-        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7)
-        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True)
+        bar = pyautogui.locateOnScreen(bar_img, confidence=0.7, region=MINIGAME_REGION)
+        fish = pyautogui.locateOnScreen(fish_img, confidence=0.7, grayscale=True, region=MINIGAME_REGION)
         if bar != None and fish != None:
             if bar.top > fish.top:
                 my_keyboard.key_down(0x39)
