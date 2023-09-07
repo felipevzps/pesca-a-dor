@@ -216,6 +216,11 @@ print(current_time, ": Started fishing")
 
 keyboard.wait('p')
 
+#Set the number of minigame_repeats
+#A minigame appears for every 5 minutes on average
+minigame_repeats = 1
+counter = 0
+
 while True:
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
@@ -250,3 +255,11 @@ while True:
         if texto_minigame != None:
             sleep(1)
             log_output.write(str(texto_log_minigame))
+            counter += 1
+
+    #Logout after the end of minigame_repeats
+    if minigame_repeats == counter:
+        sleep(20)
+        keyboard.press_and_release("ctrl+q")
+        sleep(1)
+        keyboard.press_and_release("enter")
