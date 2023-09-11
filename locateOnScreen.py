@@ -1,6 +1,5 @@
 from pyautogui import *
 import pyautogui
-import win32gui
 from time import sleep
 
 RESOLUTION='1024x768'
@@ -18,7 +17,7 @@ feebas_img='images/{}/feebas.PNG'.format(RESOLUTION)
 giant_karp_img='images/{}/giant_karp.PNG'.format(RESOLUTION)
 shiny_giant_karp_img='images/{}/shiny_giant_karp.PNG'.format(RESOLUTION)
 
-pyautogui.PAUSE = 0.01 # pyautogui delay default = 0.1
+#pyautogui.PAUSE = 0.01 # pyautogui delay default = 0.1
 
 # Function to locate the (left, top) position of each image
 while True:
