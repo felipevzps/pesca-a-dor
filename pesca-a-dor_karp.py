@@ -13,7 +13,7 @@ import threading
 #pip install Pillow
 #pip install opencv-python
 
-pyautogui.PAUSE = 0.01 #default = 0.1
+#pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
 FISHING_POSITIONS = (319, 383) #hamlin esgoto
@@ -50,13 +50,12 @@ log="logs/{}.txt".format(today_text)
 def set_fishing_rod():
     area = FISHING_POSITIONS
     area_center = pyautogui.center(area+IMG_BUBBLE_SIZE)
-    pyautogui.moveTo(area_center, duration=0.1)
-    #sleep(1.5)
+    pyautogui.moveTo(area_center)
+    sleep(2.0)
     my_keyboard.press('NUNLOCK')
     return area
 
 def wait_bubble(fishing_position):
-    sleep(2)
     while True:
         bubble = pyautogui.locateOnScreen(bubble_img, confidence=0.7, region=fishing_position+IMG_BUBBLE_SIZE)
         if bubble != None:
@@ -80,14 +79,14 @@ def minigame():
 
 def revive():
     current_position = pyautogui.position()
-    pyautogui.moveTo(POKEBALL_POSITION, duration=0.1)
+    pyautogui.moveTo(POKEBALL_POSITION)
     pyautogui.click(button="right")
     my_keyboard.press('F1')
     pyautogui.click()
     pyautogui.click()
     pyautogui.click(button="right")
     sleep(0.1)
-    pyautogui.moveTo(POKE_POSITION, duration=0.1)
+    pyautogui.moveTo(POKE_POSITION)
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('F2')
@@ -96,8 +95,8 @@ def revive():
     sleep(0.2)
     my_keyboard.press('F2')
     sleep(0.2)
-    my_keyboard.press('esc')
-    pyautogui.moveTo(current_position, duration=0.1)
+    my_keyboard.press('tab')
+    pyautogui.moveTo(current_position)
 
 def kill_shiny():
     sleep(0.5)#2 pra tentacool
@@ -167,13 +166,16 @@ def ball_giant_magikarp():
         if shiny_giant_karp != None:
             #texto = "{}: Shiny Giant Magikarp defeated!\n".format(current_time)
             print(current_time,': Shiny Giant Magikarp defeated!')
-            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.1)
-            #sleep(0.7)
-            pyautogui.click(button="right")
+            keyboard.press_and_release("w")
+            #pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25)
+            sleep(0.2)
+            #pyautogui.click(button="right")
+            my_keyboard.press('esc')
             sleep(1)
-            my_keyboard.press('down')
-            sleep(0.7)
-            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25, duration=0.1)
+            #my_keyboard.press('down')
+            keyboard.press_and_release("s")
+            sleep(0.2)
+            pyautogui.moveTo(shiny_giant_karp.left + 25, shiny_giant_karp.top + 25)
             #sleep(0.2)
             my_keyboard.press('F12')
             sleep(0.2)
@@ -189,18 +191,18 @@ def ball_magikarp():
     current_time = time.strftime("%H:%M:%S", t)
     shiny_karp = True
     while shiny_karp != None:
-        shiny_karp = pyautogui.locateOnScreen(shiny_karp_img, confidence=0.93)
+        shiny_karp = pyautogui.locateOnScreen(shiny_karp_img, confidence=0.90)
         if shiny_karp != None:
             #texto = "{}: Shiny Magikarp defeated!\n".format(current_time)
             print(current_time,': Shiny Magikarp defeated!')
             magikarp_center = pyautogui.center(shiny_karp)
-            pyautogui.moveTo(magikarp_center, duration=0.1)
+            pyautogui.moveTo(magikarp_center)
             #sleep(0.7)
             pyautogui.click(button="right")
             sleep(1)
             my_keyboard.press('down')
             sleep(0.8)
-            pyautogui.moveTo(magikarp_center, duration=0.1)
+            pyautogui.moveTo(magikarp_center)
             #sleep(0.4)
             my_keyboard.press('F12')
             sleep(1)
@@ -216,7 +218,6 @@ def kill_pokes():
     kill_feebas()
 
 def some_actions():
-    #testar isso V
     threadKillShiny.join()
     check_hook()
     sleep(0.5)
