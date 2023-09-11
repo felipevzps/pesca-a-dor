@@ -7,11 +7,12 @@ import my_keyboard
 import keyboard
 import threading
 
-pyautogui.PAUSE = 0.01 #default = 0.1 
+#pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
 
-FISHING_POSITIONS = (280, 382) #hamlin bueiro
+#FISHING_POSITIONS = (280, 382) #hamlin bueiro
+FISHING_POSITIONS = (319, 110) #hamlin Guru (fish on map)
 MINIGAME_REGION = (160,150,100,400)
 HUNGRY_POSITION = (982,236,17,20)
 IMG_BUBBLE_SIZE = (25,28)
@@ -199,7 +200,7 @@ def revive():
     sleep(0.2)
     my_keyboard.press('F2')
     sleep(0.2)
-    my_keyboard.press('esc')
+    my_keyboard.press('tab')
     pyautogui.moveTo(current_position, duration=0.3)
 
 threadKillShiny = threading.Thread(target=kill_shiny)
@@ -207,6 +208,8 @@ threadKillShiny = threading.Thread(target=kill_shiny)
 
 threadSomeActions = threading.Thread(target=some_actions)
 #threadSomeActions.start()
+
+######## START ########
 
 texto = "{}: Started fishing\n".format(current_time)
 with open(log, "a") as log_output:
@@ -217,11 +220,11 @@ print(current_time, ": Started fishing")
 keyboard.wait('p')
 
 #Set the number of minigame_repeats
-#A minigame appears for every 5 minutes on average
-minigame_repeats = 1
+#A minigame appears for every 4 minutes on average
+minigame_repeats = 120   
 counter = 0
 
-while True:
+while counter < minigame_repeats:
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     with open(log, "a") as log_output:
@@ -263,3 +266,5 @@ while True:
         keyboard.press_and_release("ctrl+q")
         sleep(1)
         keyboard.press_and_release("enter")
+
+######## END ########
