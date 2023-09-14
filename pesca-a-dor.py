@@ -11,8 +11,9 @@ import threading
 
 RESOLUTION='1024x768'
 
-#FISHING_POSITIONS = (280, 382) #hamlin bueiro
-FISHING_POSITIONS = (319, 110) #hamlin Guru (fish on map)
+FISHING_POSITIONS = (280, 382) #hamlin bueiro
+#FISHING_POSITIONS = (319, 110) #hamlin Guru (fish on map)
+#FISHING_POSITIONS = (397, 421)  #shamouti praia sul
 MINIGAME_REGION = (160,150,100,400)
 HUNGRY_POSITION = (982,236,17,20)
 IMG_BUBBLE_SIZE = (25,28)
@@ -221,7 +222,7 @@ keyboard.wait('p')
 
 #Set the number of minigame_repeats
 #A minigame appears for every 4 minutes on average
-minigame_repeats = 120   
+minigame_repeats = 100   
 counter = 0
 
 while counter < minigame_repeats:
