@@ -1,6 +1,6 @@
 # pesca-a-dor
 
-This document describes the operation and use of [pesca-a-dor](https://github.com/felipevzps/pesca-a-dor), developed to automate the fishing process in the [PxG](https://www.pokexgames.com/). This bot has been developed to `fish`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve the periodic fishing challenge` that appears on the screen every 5 minutes, allowing uninterrupted fishing.
+[pesca-a-dor](https://github.com/felipevzps/pesca-a-dor) is a bot developed to automate the fishing process in the [PxG](https://www.pokexgames.com/). Available functions: `auto fishing`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve minigame` that appears on the screen every ~5 minutes, allowing uninterrupted fishing.
 
 <div align="center">
   
@@ -36,7 +36,7 @@ To acquire the coordinates for each of these positions, you must execute [locate
 
 Ensuring that your mouse is positioned accurately during this process is crucial for obtaining precise left and top coordinates for your defined screen positions.
 
-After getting and adding the coordinates in the code of [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot inside vscode, minimize the vscode and press `P` ingame to start fishing.
+After getting and adding the coordinates in the code of [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot inside vscode, minimize the vscode and press `p` ingame to start fishing.
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
