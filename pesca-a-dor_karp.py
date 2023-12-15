@@ -7,19 +7,11 @@ import my_keyboard
 import keyboard
 import threading
 
-#req
-#pip install pyautogui
-#pip install keyboard
-#pip install Pillow
-#pip install opencv-python
-
 #pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
-FISHING_POSITIONS = (319, 383) #hamlin esgoto
-POKE_POSITION = (408, 243) #hamlin esgoto
-#FISHING_POSITIONS = (475, 227) #cerulean cp
-#POKE_POSITION = (375, 273) #cerulean cp
+FISHING_POSITIONS = (319, 383) #hamlin sewer
+POKE_POSITION = (408, 243) #hamlin sewer
 IMG_BUBBLE_SIZE = (25,28)
 MINIGAME_REGION = (160,150,100,400) 
 HOOK_REGION = (401,389,21,21)
@@ -34,7 +26,7 @@ shiny_img='images/{}/shiny.PNG'.format(RESOLUTION)
 krabby_img='images/{}/krabby.PNG'.format(RESOLUTION)
 tentacool_img='images/{}/tentacool.PNG'.format(RESOLUTION)
 hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
-hook_img='images/{}/hook2.PNG'.format(RESOLUTION)
+hook_img='images/{}/hook.PNG'.format(RESOLUTION)
 giant_karp_img='images/{}/giant_karp.PNG'.format(RESOLUTION)
 shiny_giant_karp_img='images/{}/shiny_giant_karp.PNG'.format(RESOLUTION)
 shiny_karp_img='images/{}/shiny_karp.PNG'.format(RESOLUTION)
@@ -268,13 +260,6 @@ threadSomeActions = threading.Thread(target=some_actions)
 print(current_time, ": Started fishing")
 
 keyboard.wait('p')
-
-#def login_account():
-#def soltar_pokemon():
-#def usar elixir():
-#def pescar():
-    #começa contar 5 minutos
-#def deslogar():
 
 while True:
     t = time.localtime()
