@@ -6,19 +6,10 @@ import my_keyboard
 import keyboard
 import threading
 
-#req
-#pip install pyautogui
-#pip install keyboard
-#pip install Pillow
-#pip install opencv-python
-
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
 
-#F1 REVIVE
-#F2 MOVE POKE
-
-pyautogui.PAUSE = 0.01 #diminuindo pause, default = 0.1
+pyautogui.PAUSE = 0.01 #default = 0.1
 
 RESOLUTION='1024x768'
 FISHING_POSITIONS = (319, 383)
@@ -40,7 +31,6 @@ hook_img='images/{}/hook.PNG'.format(RESOLUTION)
 octillery_img='images/{}/octillery.PNG'.format(RESOLUTION)
 cloyster_img='images/{}/cloyster.PNG'.format(RESOLUTION)
 golduck_img='images/{}/golduck.PNG'.format(RESOLUTION)
-normal_golduck_img='images/{}/normal_golduck.PNG'.format(RESOLUTION)
 psyduck_img='images/{}/psyduck.PNG'.format(RESOLUTION)
 
 def set_fishing_rod():
@@ -136,9 +126,8 @@ def ball_shiny():
     ball_krabby()
     #ball_pokemon(octillery_img)
     #ball_pokemon(cloyster_img)
-    #ball_pokemon(normal_golduck_img)
     #ball_pokemon(golduck_img)
-    #  ball_pokemon(psyduck_img)
+    #ball_pokemon(psyduck_img)
 
 def check_hook():
     #sleep(2)
