@@ -58,6 +58,12 @@ Pesca-a-dor optimizes performance with advanced [multithreading](https://docs.py
 
 The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeActions` handles `some_actions`. This parallel approach optimizes the bot's performance, especially when searching for images or executing actions simultaneously, ensuring a more responsive and streamlined experience.
 
+## Versions
+
+- [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py): Shiny Tentacool/Krabby project using a Pokémon with a passive ability (like Electabuzz or Scyther for level 100+). Generates [logs](https://github.com/felipevzps/pesca-a-dor/blob/main/logs/05052023.txt) for events.
+- [pesca-a-dor_karp.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor_karp.py): Shiny Giant Magikarp project and farm Shiny Magikarp fins (a very lucrative source of income).
+- [pesca-a-dor_maker.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor_maker.py): Similar to pesca-a-dor but requires a weaker Pokémon for your maker to fish, such as a Shedinja (level 60+).
+
 ## Achievements
 
 ```
