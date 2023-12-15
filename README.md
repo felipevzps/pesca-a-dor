@@ -1,3 +1,5 @@
+## pesca-a-dor
+
 Automated fishing in [PxG](https://www.pokexgames.com/). 
 
 Features include: `auto fishing`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve minigame` that appears on the screen every ~5 minutes, allowing uninterrupted fishing.
@@ -31,8 +33,8 @@ POKE_POSITION = (410, 242)                  # The position where the Pokémon wi
 ```
 
 >**Note:** Execute [locateOnScreen.py](https://github.com/felipevzps/pesca-a-dor/blob/main/scripts/locateOnScreen.py) in VSCode to capture coordinates. Hover your mouse over desired locations while the script runs, like Pokémon's pokéball for `POKEBALL_POSITION`.
->
->After adding coordinates to [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot in VSCode, minimize it, and press `p` in-game to start fishing.
+
+After adding coordinates to [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot in VSCode, minimize it, and press `p` in-game to start fishing.
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
@@ -49,6 +51,12 @@ Order pokémon           = F2
 Pokeball for tentacool  = F11
 Pokeball for krabby     = F12
 ```
+
+## Extra
+
+Pesca-a-dor optimizes performance with advanced [multithreading](https://docs.python.org/3.10/library/threading.html#) capabilities.
+
+The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeActions` handles `some_actions`. This parallel approach optimizes the bot's performance, especially when searching for images or executing actions simultaneously, ensuring a more responsive and streamlined experience.
 
 ## Achievements
 
