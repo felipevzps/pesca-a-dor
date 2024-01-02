@@ -34,7 +34,7 @@ POKE_POSITION = (410, 242)                  # The position where the Pokémon wi
 
 >**Note:** Execute [locateOnScreen.py](https://github.com/felipevzps/pesca-a-dor/blob/main/scripts/locateOnScreen.py) in VSCode to capture coordinates. Hover your mouse over desired locations while the script runs, like Pokémon's pokéball for `POKEBALL_POSITION`.
 
-After adding coordinates to [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py), run the bot in VSCode, minimize it, and press `p` in-game to start fishing.
+After adding coordinates to [config.py](https://github.com/felipevzps/pesca-a-dor/blob/main/config.py), run [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor.py) in VSCode, minimize it, and press `p` in-game to start fishing.
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
