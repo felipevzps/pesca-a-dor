@@ -87,7 +87,7 @@ def ball_tentacool():
     current_time = time.strftime("%H:%M:%S", t)
     tentacool = True
     while tentacool != None:
-        tentacool = pyautogui.locateOnScreen(config.tentacool_img, confidence=0.7)
+        tentacool = pyautogui.locateOnScreen(config.tentacool_img, confidence=0.85)
         if tentacool != None:
             tentacool_center = pyautogui.center(tentacool)
             pyautogui.moveTo(tentacool_center)
@@ -138,7 +138,7 @@ def check_hook():
     current_time = time.strftime("%H:%M:%S", t)
     hook = True
     while hook != None:
-        hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5)
+        hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=config.FISHING_POSITIONS+config.IMG_HOOK_SIZE)
         if hook == None:
             texto = "{}: Fixing fishing position...\n".format(current_time)
             print(current_time,': Fixing fishing position...')
