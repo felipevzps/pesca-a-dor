@@ -1,4 +1,5 @@
 IMG_BUBBLE_SIZE = (25,28)
+IMG_HOOK_SIZE = (30,30)
 
 # *** 1024x768 ***
 
