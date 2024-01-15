@@ -64,6 +64,83 @@ The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeAction
 - [pesca-a-dor_karp.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor_karp.py): Shiny Giant Magikarp project and farm Shiny Magikarp fins (a very lucrative source of income).
 - [pesca-a-dor_maker.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca-a-dor_maker.py): Similar to pesca-a-dor but requires a weaker Pokémon for your maker to fish, such as a Shedinja (level 60+).
 
+## Statistical analysis of shiny occurrences after puzzle resolution
+
+> This game claims that you have a higher chance of fishing shinies after solving the puzzle.
+> I decided to test this hypothesis and quantify the probability of shiny occurrences after puzzles.
+>
+> **Spoiler: Indeed, the shiny rate is higher xD**
+>
+> The null hypothesis for the [chi-square test](https://en.wikipedia.org/wiki/Chi-squared_test) posits that there is no significant association between the variables being examined, while the alternative hypothesis asserts the presence of a significant relationship.
+>
+> The chi-square test was employed to assess whether the observed data significantly deviate from what would be expected under the assumption of independence between the variables, providing insights into the association between puzzle resolution and the occurrence of shiny Pokémon.
+>
+> In this case, the formulated hypotheses are:
+> 
+> H0: `**There is no association**` between puzzle resolution and the occurrence of shiny Pokémon
+> 
+> H1: `**There is an association**` between puzzle resolution and the occurrence of shiny Pokémon
+
+
+## Contingency Tables
+
+<details>
+  <summary>Krabby ~70+ logs (days), more than 500 hours collected</summary>
+
+  |         |  Shiny   | No Shiny |  Total
+  |---------|----------|----------|----------
+  | After   |   504    |   8541   |   9045
+  | Without |   1367   |  85423   |  86790
+  | Total   |   1871   |  93964   |  95835
+</details>
+
+<details>
+  <summary>Tentacool ~70+ logs (days), more than 500 hours collected</summary>
+
+  |         |  Shiny   | No Shiny |  Total
+  |---------|----------|----------|----------
+  | After   |    48    |   8541   |   8589
+  | Without |   246    |  85423   |  85669
+  | Total   |   294    |  93964   |  94258
+</details>
+
+## Chi-squared Test Results
+
+<details>
+  <summary>Krabby</summary>
+
+  - Chi-squared statistic: 681.5909869816392
+  
+  - P-value: 3.0125967571505313e-150
+</details>
+
+> There is enough evidence to reject the null hypothesis for Krabby.
+>
+> The occurrence of shiny Krabby is not random.
+>
+> In other words, solving the puzzle is associated with an **increased rate** of shiny Krabby.
+
+<details>
+  <summary>Tentacool</summary>
+  
+  - Chi-squared statistic: 17.670234869403
+  - P-value: 2.6270550990164333e-05
+</details>
+
+> The occurrence of shiny Tentacool is not random.
+>
+> In other words, solving the puzzle is associated with an **increased rate** of shiny Tentacool.
+
+## Probability Analysis
+
+![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/ShinyKrabby.gif)
+- Probability of a Krabby being shiny after solving a puzzle: `5.5721%`
+- Probability of a Krabby being shiny without solving a puzzle: `1.5751%`
+
+![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/ShinyTentacool.gif)
+- Probability of a Tentacool being 'shiny' after solving a puzzle: `0.5589%`
+- Probability of a Tentacool being 'shiny' without solving a puzzle: `0.2872%`
+
 ## Achievements
 
 ```
