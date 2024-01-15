@@ -80,6 +80,9 @@ The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeAction
 > H0: `**There is no association**` between puzzle resolution and the occurrence of shiny Pokémon
 > 
 > H1: `**There is an association**` between puzzle resolution and the occurrence of shiny Pokémon
+>
+> Significance level = 0.05
+
 
 
 ## Contingency Tables
