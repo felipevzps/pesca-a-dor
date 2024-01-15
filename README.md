@@ -137,12 +137,12 @@ The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeAction
 ## Probability Analysis
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/ShinyKrabby.gif)
-- Probability of a Krabby being shiny after solving a puzzle: `5.5721%`
-- Probability of a Krabby being shiny without solving a puzzle: `1.5751%`
+- Probability to fish a shiny Krabby after solving a puzzle: `5.5721%`
+- Probability to fish a shiny Krabby without a puzzle: `1.5751%`
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/ShinyTentacool.gif)
-- Probability of a Tentacool being 'shiny' after solving a puzzle: `0.5589%`
-- Probability of a Tentacool being 'shiny' without solving a puzzle: `0.2872%`
+- Probability to fish a shiny Tentacool after solving a puzzle: `0.5589%`
+- Probability to fish a shiny Tentacool without a puzzle: `0.2872%`
 
 ## Achievements
 
