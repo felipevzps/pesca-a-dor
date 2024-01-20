@@ -1,6 +1,7 @@
-IMG_BUBBLE_SIZE = (25,28)
-IMG_HOOK_SIZE = (30,30)
+#IMG_BUBBLE_SIZE = (25,28)
+IMG_BUBBLE_SIZE = (26,28)
 
+IMG_HOOK_SIZE = (30, 30)
 # *** 1024x768 ***
 
 RESOLUTION='1024x768'
@@ -17,19 +18,22 @@ RESOLUTION='1024x768'
 
 # *** 1920x1080 ***
 
-FISHING_POSITIONS = (1646, 243)      #pewter paras/diglett HD
-MINIGAME_REGION = (991,253,268,455)  
-HUNGRY_POSITION = (1877,244,17,20)   
-POKEBALL_POSITION = (1730, 246)      
-POKE_POSITION = (1337, 404)          
+#FISHING_POSITIONS = (1646, 243)      #pewter paras/diglett HD
+FISHING_POSITIONS = (1574, 247)      #caminho cerulean (dragonair)
+MINIGAME_REGION = (991,253,268,455)  #HD
+HUNGRY_POSITION = (1877,244,17,20)   #HD
+POKEBALL_POSITION = (1730, 246)      #HD
+POKE_POSITION = (1337, 404)          #HD
 
 #IMG PATH
-bubble_img='images/{}/bubble.PNG'.format(RESOLUTION)
+bubble_img='images/{}/bubble1.PNG'.format(RESOLUTION)
 bar_img='images/{}/bar.PNG'.format(RESOLUTION)
 fish_img='images/{}/fish_bin.PNG'.format(RESOLUTION)
 shiny_img='images/{}/shiny.PNG'.format(RESOLUTION)
 krabby_img='images/{}/krabby.PNG'.format(RESOLUTION)
 tentacool_img='images/{}/tentacool.PNG'.format(RESOLUTION)
+dratini_img='images/{}/dratini.PNG'.format(RESOLUTION)
+dragonair_img='images/{}/dragonair.PNG'.format(RESOLUTION)
 hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
 hook_img='images/{}/hook.PNG'.format(RESOLUTION)
 
