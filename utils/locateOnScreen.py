@@ -18,19 +18,20 @@ while True:
     tentacool = pyautogui.locateOnScreen(config.tentacool_img, confidence=0.88)
     feebas = pyautogui.locateOnScreen(config.feebas_img, confidence=0.8)
     giant_karp = pyautogui.locateOnScreen(config.giant_karp_img, confidence=0.90)
-    shiny_giant_karp = pyautogui.locateOnScreen(config.shiny_giant_karp_img, confidence=0.95)
+    shiny_giant_karp = pyautogui.locateOnScreen(config.shiny_giant_karp_img, confidence=0.83)
+    shiny_dratini = pyautogui.locateOnScreen(config.dratini_img, confidence=0.69)
+    shiny_dragonair = pyautogui.locateOnScreen(config.dragonair_img, confidence=0.69)
 
     print(pyautogui.position())             # Mouse position
-    
-    
     print("bubble",bubble)                  # Bubble and hook positions
     print("hook",hook)
-
     #print("bar",bar)                       # Minigame features positions
     #print("fish",fish)
-
     #print("hungry",hungry)                 # Hungry position (the icon must be RED if the pokemon is hungry)
-
-    #print("krabby",krabby)                 # Dead pokemon positions
-    #print("tentacool",tentacool)
-    #print("giant_karp",giant_karp)
+    #print("shiny krabby",krabby)           # Dead pokemon positions
+    #print("shiny tentacool",tentacool)
+    #print("shiny giant magikarp", shiny_giant_karp)
+    print("shiny dratini",shiny_dratini)
+    print("shiny dragonair",shiny_dragonair)
+    #print("normal dratini",normal_dratini)
+    #print("normal dragonair",normal_dragonair)
