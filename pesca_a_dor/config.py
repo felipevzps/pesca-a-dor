@@ -1,6 +1,13 @@
 # *** GLOBAL VARIABLES ***
 
-USE_THREAD_KILL_SHINY = True         # Set as True/False if do/dont want to use threadKillShiny
+'''
+For fishing magikarp, krabby and tentacool: 
+USE_THREAD_KILL_SHINY = True
+USE_THREAD_BALL_DRAGON = False
+'''
+
+USE_THREAD_KILL_SHINY = False         # Set as True/False if do/dont want to use threadKillShiny
+USE_THREAD_BALL_DRAGON = True         # Set as True/False if do/dont want to project dragonair
 
 #IMG_BUBBLE_SIZE = (25,28)           # bubble.PNG  (1024x768)
 IMG_BUBBLE_SIZE = (26,28)            # bubble1.PNG (1920x1080)
@@ -23,7 +30,8 @@ IMG_HOOK_SIZE = (30, 30)
 #FISHING_POSITIONS = (1646, 243)        # pewter paras/diglett
 #FISHING_POSITIONS = (1574, 247)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
-FISHING_POSITIONS = (1464, 430)        # cerulean CP 
+#FISHING_POSITIONS = (1464, 430)        # cerulean CP 
+FISHING_POSITIONS = (1537, 430)        # hamlin east 
 
 MINIGAME_REGION = (991,253,268,455)  
 HUNGRY_POSITION = (1877,244,17,20)   

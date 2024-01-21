@@ -6,7 +6,7 @@ import threading
 import config
 import functions
 
-print("Press 'P' to start   ")
+print(f"{functions.current_time} : Press 'P' to start")
 keyboard.wait('p')                                   # Press 'P' to start
 
 texto = "{}: Started fishing\n".format(functions.current_time)
@@ -34,6 +34,10 @@ while config.counter < config.minigame_repeats:
         functions.threadSomeActions.start()
     functions.threadSomeActions.join()               # Wait until the thread terminates
     
+    if functions.constant_search_dragon() and config.USE_THREAD_BALL_DRAGON: 
+        functions.threadSearchDragon = threading.Thread(target=functions.ball_dragon)
+        functions.threadSearchDragon.start()
+
     sleep(0.5)
     functions.wait_bubble(fishing_position)
     texto_minigame = functions.minigame()
@@ -50,3 +54,6 @@ while config.counter < config.minigame_repeats:
         keyboard.press_and_release("ctrl+q")
         sleep(1)
         keyboard.press_and_release("enter")
+
+if functions.threadSearchDragon is not None and functions.threadSearchDragon.is_alive():
+    functions.threadSearchDragon.join()              # Wait until the thread terminates

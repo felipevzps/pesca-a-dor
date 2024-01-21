@@ -85,13 +85,12 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY)
                     sleep(0.5)
                     ball_shiny("Shiny Krabby", config.krabby_img, 'F10', 0.7)
                     ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
-                    ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.8, offset_x=25, offset_y=25)
+                    ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.83, offset_x=25, offset_y=25)
 
 def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
     sleep(0.5)
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
-    
     pokemon_found = True
     while pokemon_found != None:
         pokemon_found = pyautogui.locateOnScreen(img_path, confidence=confidence)
@@ -107,21 +106,46 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
             mouseUp()
             with open(log, "a") as log_out:
                 log_out.write(texto)
-            break
+            return True
+        else:
+            return False   
 
 def some_actions(use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
     if use_thread_kill_shiny:
         threadKillShiny.join()
     check_hook()
     sleep(0.5)
-
-    ball_shiny("Shiny Dratini", config.dratini_img, 'F12', 0.7)
-    ball_shiny("Shiny Dragonair", config.dragonair_img, 'F12', 0.7)
-
     feed_pokemon()
     my_keyboard.press('esc')
     my_keyboard.press('tab')
 
+def constant_search_dragon():
+    shiny = True
+    while shiny != None:
+        shiny = pyautogui.locateOnScreen(config.shiny_img, confidence=0.9)
+        if shiny != None:
+            return True
+        else:
+            sleep(1)
+    return False
+
+def ball_dragon():
+    global USE_THREAD_BALL_DRAGON
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    print(current_time, f": Thread ball_dragon activated!")
+    while True:
+        print(current_time, f": Searching for Shiny Dratini or Shiny Dragonair ...")
+        config.USE_THREAD_BALL_DRAGON = False
+        sleep(0.5)
+        dratini = ball_shiny("Shiny Dratini", config.dratini_img, 'F12', 0.69)
+        dragonair = ball_shiny("Shiny Dragonair", config.dragonair_img, 'F12', 0.69)
+        if dratini or dragonair:
+            config.USE_THREAD_BALL_DRAGON = True
+            print(current_time, f": Thread ball_dragon deactivated!")
+            break
+        sleep(1)
+        
 def check_hook(use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
     if use_thread_kill_shiny:
         threadKillShiny.join()
@@ -179,3 +203,4 @@ def revive():
 
 threadKillShiny = threading.Thread(target=kill_shiny)
 threadSomeActions = threading.Thread(target=some_actions)
+threadSearchDragon = threading.Thread(target=ball_dragon)
