@@ -28,10 +28,10 @@ IMG_HOOK_SIZE = (30, 30)
 # *** 1920x1080 ***
 
 #FISHING_POSITIONS = (1646, 243)        # pewter paras/diglett
-#FISHING_POSITIONS = (1574, 247)        # pewter-cerulean road (dragonair)
+FISHING_POSITIONS = (1574, 576)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
 #FISHING_POSITIONS = (1464, 430)        # cerulean CP 
-FISHING_POSITIONS = (1537, 430)        # hamlin east 
+#FISHING_POSITIONS = (1537, 430)        # hamlin east 
 
 MINIGAME_REGION = (991,253,268,455)  
 HUNGRY_POSITION = (1877,244,17,20)   
@@ -69,5 +69,5 @@ KILL_POKEMON_LIST = [
     A minigame appears for every 4 minutes on average
     minigame_repeats = 100 -> AFK fishing for ~6.5 hours '''
 
-minigame_repeats = 100   
+minigame_repeats = 100   # 100
 counter = 0
