@@ -131,6 +131,7 @@ def constant_search_dragon():
 
 def ball_dragon():
     global USE_THREAD_BALL_DRAGON
+    log_message("Wild pokémon appeared!")
     while True:
         config.USE_THREAD_BALL_DRAGON = False
         sleep(0.5)
