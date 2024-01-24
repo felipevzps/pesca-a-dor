@@ -23,7 +23,7 @@ IMG_HOOK_SIZE = (30, 30)
 # *** 1920x1080 ***
 
 #FISHING_POSITIONS = (1646, 243)        # pewter paras/diglett
-FISHING_POSITIONS = (1574, 576)        # pewter-cerulean road (dragonair)
+FISHING_POSITIONS = (1574, 393)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
 #FISHING_POSITIONS = (1464, 430)        # cerulean CP 
 #FISHING_POSITIONS = (1537, 430)        # hamlin east 
@@ -54,6 +54,8 @@ hungry_img='images/{}/hungry.PNG'.format(RESOLUTION)
 hook_img='images/{}/hook.PNG'.format(RESOLUTION)
 elixir_img='images/{}/elixir.PNG'.format(RESOLUTION)
 combat_img='images/{}/combat.PNG'.format(RESOLUTION)
+electabuzz_img='images/{}/electabuzz.PNG'.format(RESOLUTION)
+shedinja_img='images/{}/shedinja.PNG'.format(RESOLUTION)
 
 # List of tuples containing pokemons to kill_shiny
 KILL_POKEMON_LIST = [
