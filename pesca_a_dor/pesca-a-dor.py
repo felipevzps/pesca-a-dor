@@ -22,6 +22,10 @@ while config.counter < config.minigame_repeats:
 
     functions.wait_bubble(fishing_position)
     config.counter = functions.minigame(config.counter)
+
+    if functions.find_elixir() and config.FISH_MAGIKARP:
+        functions.apply_elixir_mode()
+
     functions.logout(config.counter)
     
 functions.join_thread_if_alive(functions.threadSearchDragon)    

@@ -90,7 +90,8 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY)
                     sleep(0.5)
                     ball_shiny("Shiny Krabby", config.krabby_img, 'F10', 0.7)
                     ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
-                    ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.88, offset_x=15, offset_y=15)
+                    ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.95, offset_x=15, offset_y=15)
+                    ball_shiny("Shiny Magikarp", config.magikarp_img, 'F10', 0.95, offset_x=1, offset_y=1)
 
 def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
     sleep(0.5)
@@ -100,6 +101,12 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
         if pokemon_found != None:
             log_message("{} defeated!".format(pokemon_name))
             pokemon_center = pyautogui.center(pokemon_found)
+            if offset_x > 0:
+                pyautogui.moveTo(pokemon_center[0] + offset_x, pokemon_center[1] + offset_y)
+                pyautogui.click(button="right")
+                sleep(0.5)
+                my_keyboard.press("right")
+                sleep(0.5)
             pyautogui.moveTo(pokemon_center[0] + offset_x, pokemon_center[1] + offset_y)
             sleep(1)
             my_keyboard.press(key)
@@ -141,7 +148,78 @@ def ball_dragon():
             config.USE_THREAD_BALL_DRAGON = True
             break
         sleep(1)
+
+def find_elixir():
+    global FISH_MAGIKARP
+    while config.FISH_MAGIKARP:
+        elixir = pyautogui.locateOnScreen(config.elixir_img, confidence=0.9, region=(1382, 879, 36,21))
+        if elixir != None:
+            return True
+        else:
+            return False
+
+def change_pokemon(message):
+    log_message(message)
+    pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.3)
+    pyautogui.click(button="right")
+    sleep(1)
+    pyautogui.moveTo(1735, 306)
+    sleep(0.5)
+    pyautogui.dragTo(1735, 243, button="left", duration=1)
+    sleep(0.5)
+    pyautogui.click(1735, 242, button="right")
+    sleep(1)
+
+def use_bait(message):
+    log_message(message)
+    pyautogui.moveTo(1251, 898, duration=0.3)
+    pyautogui.click(button="left")
+    sleep(1)
+
+def use_elixir(message):
+    log_message(message)
+    pyautogui.moveTo(1398, 898, duration=0.3)
+    pyautogui.click(button="left")
+    sleep(1)
+
+def apply_elixir_mode():
+    global FISH_MAGIKARP
+    log_message("Starting elixir mode!")
+
+    sleep(1)
+    combat = pyautogui.locateOnScreen(config.combat_img, confidence=0.9, region=(960, 850, 110, 70))
+    while combat != None:
+        combat = pyautogui.locateOnScreen(config.combat_img, confidence=0.9, region=(960, 850, 110, 70))
+        sleep(1)
+
+    sleep(0.5)
+    change_pokemon("Changing pokémon")
+    order_pokemon()
+    use_bait("Removing bait")
+    use_elixir("Using fisherman's elixir")
+    start_time = time.time()
+
+    while config.FISH_MAGIKARP and time.time() - start_time < 300:  # 5 minutes
         
+        fishing_position = set_fishing_rod()
+        start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST,))
+        start_and_join_thread(threadSomeActions, some_actions)
+        wait_bubble(fishing_position)
+        minigame(config.counter)
+
+    sleep(0.5)
+    combat = pyautogui.locateOnScreen(config.combat_img, confidence=0.9, region=(960, 850, 110, 70))
+    while combat != None:
+        combat = pyautogui.locateOnScreen(config.combat_img, confidence=0.9, region=(960, 850, 110, 70))
+        sleep(1)
+
+    sleep(1)
+    log_message("Exiting elixir mode!")
+    change_pokemon("Changing pokémon")
+    order_pokemon()
+    use_bait("Applying bait")
+    sleep(1)
+
 def check_hook(use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
@@ -162,15 +240,7 @@ def feed_pokemon():
             my_keyboard.press('caps')
         break
 
-def revive():
-    current_position = pyautogui.position()
-    pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.3)
-    pyautogui.click(button="right")
-    my_keyboard.press('F1')
-    pyautogui.click()
-    pyautogui.click()
-    pyautogui.click(button="right")
-    sleep(0.1)
+def order_pokemon():
     pyautogui.moveTo(config.POKE_POSITION, duration=0.3)
     my_keyboard.press('F2')
     sleep(0.2)
@@ -181,6 +251,17 @@ def revive():
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('tab')
+
+def revive():
+    current_position = pyautogui.position()
+    pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.3)
+    pyautogui.click(button="right")
+    my_keyboard.press('F1')
+    pyautogui.click()
+    pyautogui.click()
+    pyautogui.click(button="right")
+    sleep(0.1)
+    order_pokemon()
     pyautogui.moveTo(current_position, duration=0.3)
     sleep(0.2)
 
