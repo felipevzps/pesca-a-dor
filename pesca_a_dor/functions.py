@@ -65,7 +65,7 @@ def minigame(counter):
         counter += 1
     return counter
 
-def kill_shiny(pokemon_list, use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
+def kill_shiny(pokemon_list, use_thread_kill_shiny):
     if use_thread_kill_shiny:
         for pokemon_info in pokemon_list:
             pokemon_name, img_path, confidence = pokemon_info
@@ -118,10 +118,10 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
         else:
             return False   
 
-def some_actions(use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
+def some_actions(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
-    check_hook()
+    check_hook(use_thread_kill_shiny)
     sleep(0.5)
     feed_pokemon()
     my_keyboard.press('esc')
@@ -193,10 +193,12 @@ def get_pokemon_info():
         pokemon = "shedinja"
     return pokemon 
 
-def apply_elixir_mode():
+def apply_elixir_mode(use_thread_kill_shiny):
     global FISH_MAGIKARP
-    log_message("Starting elixir mode!")
+    original_use_thread_kill_shiny = use_thread_kill_shiny
+    use_thread_kill_shiny = True
 
+    log_message("Starting elixir mode!")
     sleep(0.5)
     pokemon = get_pokemon_info()
 
@@ -216,8 +218,8 @@ def apply_elixir_mode():
     while config.FISH_MAGIKARP and time.time() - start_time < 300:  # 5 minutes
         
         fishing_position = set_fishing_rod()
-        start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST,))
-        start_and_join_thread(threadSomeActions, some_actions)
+        start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST, use_thread_kill_shiny))
+        start_and_join_thread(threadSomeActions, some_actions, (use_thread_kill_shiny,))
         wait_bubble(fishing_position)
         minigame(config.counter)
 
@@ -233,10 +235,13 @@ def apply_elixir_mode():
         change_pokemon("Changing pokémon")
         order_pokemon()
 
+    config.USE_THREAD_KILL_SHINY = original_use_thread_kill_shiny 
+
     use_bait("Applying bait")
     sleep(1)
+    return config.USE_THREAD_KILL_SHINY
 
-def check_hook(use_thread_kill_shiny=config.USE_THREAD_KILL_SHINY):
+def check_hook(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
     sleep(2)
@@ -293,6 +298,6 @@ def logout(counter):
         sleep(1)
         keyboard.press_and_release("enter")
 
-threadKillShiny = threading.Thread(target=kill_shiny, args=(config.KILL_POKEMON_LIST,))
-threadSomeActions = threading.Thread(target=some_actions)
-threadSearchDragon = threading.Thread(target=ball_dragon)
+threadKillShiny = threading.Thread(target=kill_shiny, args=(config.KILL_POKEMON_LIST, config.USE_THREAD_KILL_SHINY))
+threadSomeActions = threading.Thread(target=some_actions, args=(config.USE_THREAD_KILL_SHINY,))
+threadSearchDragon = threading.Thread(target=ball_dragon, args=(config.USE_THREAD_BALL_DRAGON,))

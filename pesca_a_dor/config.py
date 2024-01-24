@@ -1,7 +1,7 @@
 # *** GLOBAL VARIABLES ***
 
-USE_THREAD_KILL_SHINY = True         # Set as True/False if do/dont want to use threadKillShiny
-USE_THREAD_BALL_DRAGON = False       # Set as True/False if do/dont want to project dragonair
+USE_THREAD_KILL_SHINY = False        # Set as True/False if do/dont want to use threadKillShiny on main loop
+USE_THREAD_BALL_DRAGON = True        # Set as True/False if do/dont want to project dragonair on main loop
 FISH_MAGIKARP = True                 # Set as True to activate elixir mode 
 
 #IMG_BUBBLE_SIZE = (25,28)           # bubble.PNG  (1024x768)
