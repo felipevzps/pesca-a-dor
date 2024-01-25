@@ -93,5 +93,16 @@ def press(hotkey, delay=0.5):
     time.sleep(delay)
     release_key(hexKeyCode)
 
+def press_ctrl_key(f_key, delay=0.5):
+    hexKeyCtrl = key["CTROL"]
+    hex_key_f = key[f_key.upper()]
+    key_down(hexKeyCtrl)
+    time.sleep(0.3)
+    key_down(hex_key_f)
+    time.sleep(delay)
+    release_key(hex_key_f)
+    time.sleep(0.3)
+    release_key(hexKeyCtrl)
+
 # directx scan codes
 # http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
