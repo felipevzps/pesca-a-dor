@@ -26,8 +26,8 @@ IMG_HOOK_SIZE = (30, 30)
 #FISHING_POSITIONS = (1574, 393)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
 
-FISHING_POSITIONS = (1062, 284)        # vermilion west (dragonair)
-#FISHING_POSITIONS = (1208, 321)        # hamlin lake
+#FISHING_POSITIONS = (952, 430)        # vermilion west (dragonair)
+FISHING_POSITIONS = (1208, 321)        # hamlin lake
 
 #FISHING_POSITIONS = (1464, 430)        # cerulean CP 
 #FISHING_POSITIONS = (1537, 430)        # hamlin east 

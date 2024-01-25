@@ -70,25 +70,28 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny):
         for pokemon_info in pokemon_list:
             pokemon_name, img_path, confidence = pokemon_info
             sleep(0.5)
-            shiny = True
-            while shiny != None:
+            shiny_found = False
+            while True:
                 shiny = pyautogui.locateOnScreen(img_path, confidence=confidence)
-                if shiny != None:
-                    log_message("Wild {} appeared!".format(pokemon_name))
-                    sleep(0.1)
-                    my_keyboard.press('backspace')  # Use medicine on pokémon
-                    sleep(0.1)
-                    my_keyboard.press('F7')         # Mamaragan
-                    sleep(0.1)
-                    my_keyboard.press('F5')         # Electrify
-                    sleep(0.1)
-                    my_keyboard.press('F4')         # Thunder Wrath
-                    sleep(0.1)
-                    my_keyboard.press('F6')         # Discharge 
-                    sleep(0.5)
-                    revive()
-                    order_pokemon()
-            if pokemon_name == "pokémon":
+                if shiny == None:
+                    break
+                log_message("Wild {} appeared!".format(pokemon_name))
+                sleep(0.1)
+                my_keyboard.press('backspace')  # Use medicine on pokémon
+                sleep(0.1)
+                my_keyboard.press('F7')         # Mamaragan
+                sleep(0.1)
+                my_keyboard.press('F5')         # Electrify
+                sleep(0.1)
+                my_keyboard.press('F4')         # Thunder Wrath
+                sleep(0.1)
+                my_keyboard.press('F6')         # Discharge 
+                sleep(0.5)
+                revive()
+                order_pokemon()
+                shiny_found = True
+
+            if shiny_found and pokemon_name == "pokémon":
                 ball_shiny("Shiny Krabby", config.krabby_img, 'F10', 0.7)
                 ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
                 ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.85, offset_x=15, offset_y=15)
@@ -174,16 +177,12 @@ def change_pokemon(message):
 def use_bait(message):
     sleep(1)
     log_message(message)
-    pyautogui.moveTo(1251, 898, duration=0.5)
-    pyautogui.click(button="left")
-    sleep(1)
+    my_keyboard.press_ctrl_key('F2', delay=0)
 
-def use_elixir(message):    
-    sleep(1)
+def use_elixir(message):
+    sleep(1)    
     log_message(message)
-    pyautogui.moveTo(1398, 898, duration=0.5)
-    pyautogui.click(button="left")
-    sleep(1)
+    my_keyboard.press_ctrl_key('F3', delay=0)
 
 def get_pokemon_info():
     electabuzz = pyautogui.locateOnScreen(config.electabuzz_img, confidence=0.9, region=(1717, 228, 34, 34))
@@ -218,8 +217,8 @@ def apply_elixir_mode(use_thread_kill_shiny):
 
     while config.FISH_MAGIKARP and time.time() - start_time < 300:  # 5 minutes
         
-        fishing_position = set_fishing_rod()
         start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST, use_thread_kill_shiny))
+        fishing_position = set_fishing_rod()
         start_and_join_thread(threadSomeActions, some_actions, (use_thread_kill_shiny,))
         wait_bubble(fishing_position)
         minigame(config.counter)

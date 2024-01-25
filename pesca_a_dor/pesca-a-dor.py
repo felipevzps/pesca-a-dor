@@ -15,7 +15,7 @@ while config.counter < config.minigame_repeats:
 
     functions.start_and_join_thread(functions.threadKillShiny,functions.kill_shiny,(config.KILL_POKEMON_LIST, config.USE_THREAD_KILL_SHINY))
     functions.start_and_join_thread(functions.threadSomeActions,functions.some_actions,(config.USE_THREAD_KILL_SHINY,))
-
+    
     if functions.constant_search_dragon() and config.USE_THREAD_BALL_DRAGON:
         functions.threadSearchDragon = threading.Thread(target=functions.ball_dragon)
         functions.threadSearchDragon.start()
