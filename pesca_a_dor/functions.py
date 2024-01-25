@@ -33,7 +33,7 @@ def set_fishing_rod():
     area = config.FISHING_POSITIONS
     area_center = pyautogui.center(area+config.IMG_BUBBLE_SIZE)
     pyautogui.moveTo(area_center)
-    sleep(1)
+    sleep(2)
     my_keyboard.press('NUNLOCK')
     return area
 
@@ -88,11 +88,11 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny):
                     sleep(0.5)
                     revive()
                     order_pokemon()
-                    sleep(0.5)
-                    ball_shiny("Shiny Krabby", config.krabby_img, 'F10', 0.7)
-                    ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
-                    ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.88, offset_x=15, offset_y=15)
-                    ball_shiny("Shiny Magikarp", config.magikarp_img, 'F10', 0.9, offset_x=1, offset_y=1)
+            if pokemon_name == "pokémon":
+                ball_shiny("Shiny Krabby", config.krabby_img, 'F10', 0.7)
+                ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
+                ball_shiny("Shiny Giant Magikarp", config.shiny_giant_karp_img, 'F10', 0.85, offset_x=15, offset_y=15)
+                ball_shiny("Shiny Magikarp", config.magikarp_img, 'F10', 0.9, offset_x=1, offset_y=1)
 
 def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
     sleep(0.5)
@@ -107,9 +107,9 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
                 pyautogui.click(button="right")
                 sleep(1)
                 my_keyboard.press("right")
-                sleep(0.5)
+                sleep(1)
             pyautogui.moveTo(pokemon_center[0] + offset_x, pokemon_center[1] + offset_y)
-            sleep(1)
+            sleep(0.5)
             my_keyboard.press(key)
             sleep(0.5)
             mouseDown(pokemon_center[0] + offset_x, pokemon_center[1] + offset_y)
@@ -121,8 +121,8 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
 def some_actions(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
-    check_hook(use_thread_kill_shiny)
     sleep(0.5)
+    check_hook(use_thread_kill_shiny)
     feed_pokemon()
     my_keyboard.press('esc')
     my_keyboard.press('tab')
@@ -174,13 +174,14 @@ def change_pokemon(message):
 def use_bait(message):
     sleep(1)
     log_message(message)
-    pyautogui.moveTo(1251, 898, duration=0.3)
+    pyautogui.moveTo(1251, 898, duration=0.5)
     pyautogui.click(button="left")
     sleep(1)
 
-def use_elixir(message):
+def use_elixir(message):    
+    sleep(1)
     log_message(message)
-    pyautogui.moveTo(1398, 898, duration=0.3)
+    pyautogui.moveTo(1398, 898, duration=0.5)
     pyautogui.click(button="left")
     sleep(1)
 
@@ -264,13 +265,13 @@ def feed_pokemon():
 def order_pokemon():
     pyautogui.moveTo(config.POKE_POSITION, duration=0.3)
     my_keyboard.press('F2')
-    sleep(0.2)
+    sleep(0.5)
     my_keyboard.press('F2')
-    sleep(0.2)
+    sleep(0.5)
     my_keyboard.press('F2')
-    sleep(0.2)
+    sleep(0.5)
     my_keyboard.press('F2')
-    sleep(0.2)
+    sleep(0.5)
     my_keyboard.press('tab')
 
 def revive():

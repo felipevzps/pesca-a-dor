@@ -23,8 +23,12 @@ IMG_HOOK_SIZE = (30, 30)
 # *** 1920x1080 ***
 
 #FISHING_POSITIONS = (1646, 243)        # pewter paras/diglett
-FISHING_POSITIONS = (1574, 393)        # pewter-cerulean road (dragonair)
+#FISHING_POSITIONS = (1574, 393)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
+
+FISHING_POSITIONS = (1062, 284)        # vermilion west (dragonair)
+#FISHING_POSITIONS = (1208, 321)        # hamlin lake
+
 #FISHING_POSITIONS = (1464, 430)        # cerulean CP 
 #FISHING_POSITIONS = (1537, 430)        # hamlin east 
 
@@ -60,7 +64,7 @@ shedinja_img='images/{}/shedinja.PNG'.format(RESOLUTION)
 # List of tuples containing pokemons to kill_shiny
 KILL_POKEMON_LIST = [
     ("pokémon", shiny_img, 0.9),
-    ("Feebas", feebas_img, 0.8),
+    ("Feebas", feebas_img, 0.9),
     ("Giant Magikarp", giant_karp_img, 0.9),
 ]
 
