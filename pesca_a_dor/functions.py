@@ -33,7 +33,7 @@ def set_fishing_rod():
     area = config.FISHING_POSITIONS
     area_center = pyautogui.center(area+config.IMG_BUBBLE_SIZE)
     pyautogui.moveTo(area_center)
-    sleep(2)
+    sleep(0.5)
     my_keyboard.press('NUNLOCK')
     return area
 
@@ -217,12 +217,13 @@ def apply_elixir_mode(use_thread_kill_shiny):
 
     while config.FISH_MAGIKARP and time.time() - start_time < 300:  # 5 minutes
         
-        start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST, use_thread_kill_shiny))
         fishing_position = set_fishing_rod()
+        start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST, use_thread_kill_shiny))
         start_and_join_thread(threadSomeActions, some_actions, (use_thread_kill_shiny,))
         wait_bubble(fishing_position)
         minigame(config.counter)
 
+    start_and_join_thread(threadKillShiny, kill_shiny, (config.KILL_POKEMON_LIST, use_thread_kill_shiny))
     sleep(0.5)
     log_message("Exiting elixir mode!")
 
@@ -244,11 +245,12 @@ def apply_elixir_mode(use_thread_kill_shiny):
 def check_hook(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
-    sleep(2)
+    sleep(0.5)
     hook = True
     while hook != None: 
         hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=config.FISHING_POSITIONS+config.IMG_HOOK_SIZE)
         if hook == None:
+            sleep(3)
             log_message("Fixing fishing position...")
             set_fishing_rod()
         break
@@ -264,21 +266,23 @@ def feed_pokemon():
 def order_pokemon():
     pyautogui.moveTo(config.POKE_POSITION, duration=0.3)
     my_keyboard.press('F2')
-    sleep(0.5)
+    sleep(0.2)
     my_keyboard.press('F2')
-    sleep(0.5)
+    sleep(0.3)
     my_keyboard.press('F2')
-    sleep(0.5)
+    sleep(0.3)
     my_keyboard.press('F2')
-    sleep(0.5)
+    sleep(0.2)
     my_keyboard.press('tab')
 
 def revive():
     pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.3)
+    sleep(0.1)
     pyautogui.click(button="right", duration=0.8)
+    sleep(0.1)
     my_keyboard.press('F1', delay=0)
+    sleep(0.1)
     pyautogui.click(button="right", duration=0.8)
-    sleep(0.5)
 
 def start_and_join_thread(thread, target, args=()):
     if not thread.is_alive():
