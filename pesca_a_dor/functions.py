@@ -72,7 +72,7 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny):
             sleep(0.5)
             shiny_found = False
             while True:
-                shiny = pyautogui.locateOnScreen(img_path, confidence=confidence)
+                shiny = pyautogui.locateOnScreen(img_path, confidence=confidence, region=config.REGION_BATTLE)
                 if shiny == None:
                     break
                 log_message("Wild {} appeared!".format(pokemon_name))
@@ -265,6 +265,8 @@ def feed_pokemon():
 
 def order_pokemon():
     pyautogui.moveTo(config.POKE_POSITION, duration=0.3)
+    my_keyboard.press('F2')
+    my_keyboard.press('F2')
     my_keyboard.press('F2')
     sleep(0.2)
     my_keyboard.press('F2')

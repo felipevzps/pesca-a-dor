@@ -7,7 +7,7 @@ FISH_MAGIKARP = True                 # Set as True to activate elixir mode
 #IMG_BUBBLE_SIZE = (25,28)           # bubble.PNG  (1024x768)
 IMG_BUBBLE_SIZE = (26,28)            # bubble1.PNG (1920x1080)
 IMG_HOOK_SIZE = (30, 30)
-
+REGION_BATTLE = (1714, 383, 206, 323)
 # *** 1024x768 ***
 
 #FISHING_POSITIONS = (280, 266)      # pewter bridge
@@ -60,6 +60,7 @@ elixir_img='images/{}/elixir.PNG'.format(RESOLUTION)
 combat_img='images/{}/combat.PNG'.format(RESOLUTION)
 electabuzz_img='images/{}/electabuzz.PNG'.format(RESOLUTION)
 shedinja_img='images/{}/shedinja.PNG'.format(RESOLUTION)
+battle_img='images/{}/battle.PNG'.format(RESOLUTION)
 
 # List of tuples containing pokemons to kill_shiny
 KILL_POKEMON_LIST = [
