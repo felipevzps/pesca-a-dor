@@ -1,12 +1,15 @@
+<div align="center">
+
 ## pesca-a-dor
 
+  
 BOT for automated fishing in [PxG](https://www.pokexgames.com/). 
+
 
 ![](images/pesca-a-dor.png)
 
 Features include: `auto fishing`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve minigame` that appears on the screen every ~5 minutes, allowing uninterrupted fishing.
 
-<div align="center">
   
 ![](images/desafio_de_pesca.gif)
 
@@ -23,7 +26,7 @@ pip install opencv-python
 
 ## Usage
 
-Set your monitor resolution to `1024x768` for fast and precise screen coordinates.
+Set your monitor resolution to `1024x768` for fast and precise screen coordinates (also works on 1920x1080).
 
 ```python
 FISHING_POSITIONS = (280, 382)              # The location where the bait will be cast
