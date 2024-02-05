@@ -36,10 +36,7 @@ def set_fishing_rod():
     log_message("...")
     with open("pesca_a_dor/infos.json", "r") as file:
         config_json = json.load(file)
-    #area = config.FISHING_POSITIONS
     area = config_json["FISHING_POSITION"]
-    #area_center = pyautogui.center(area+config.IMG_BUBBLE_SIZE)
-    #area_center = pyautogui.center((area[0], area[1], area[0]+config.IMG_BUBBLE_SIZE[0],area[1]+config.IMG_BUBBLE_SIZE[0]))
     area_center = pyautogui.center((area[0], area[1], config.IMG_BUBBLE_SIZE[0], config.IMG_BUBBLE_SIZE[1]))
     pyautogui.moveTo(area_center)
     sleep(0.5)
@@ -49,7 +46,6 @@ def set_fishing_rod():
 
 def wait_bubble(fishing_position):
     while True:
-        #bubble = pyautogui.locateOnScreen(config.bubble_img, confidence=0.7, region=fishing_position+config.IMG_BUBBLE_SIZE)
         bubble = pyautogui.locateOnScreen(config.bubble_img, confidence=0.7, region=(fishing_position[0], fishing_position[1], fishing_position[0] + config.IMG_BUBBLE_SIZE[0], fishing_position[1] + config.IMG_BUBBLE_SIZE[1]))
         if bubble != None:
             my_keyboard.press('NUNLOCK')
@@ -138,7 +134,7 @@ def some_actions(use_thread_kill_shiny):
     sleep(0.5)
     check_hook(use_thread_kill_shiny)
     feed_pokemon()
-    #my_keyboard.press('esc')
+    my_keyboard.press_ctrl_key('F5', delay=0)
     my_keyboard.press('tab')
 
 def constant_search_dragon():
@@ -152,10 +148,8 @@ def constant_search_dragon():
     return False
 
 def ball_dragon():
-    #global USE_THREAD_BALL_DRAGON
     log_message("Wild pokémon appeared!")
     while True:
-        #config.USE_THREAD_BALL_DRAGON = False
         config_json["USE_THREAD_BALL_DRAGON"] = False
         sleep(0.5)
         dratini = ball_shiny("Shiny Dratini", config.dratini_img, 'F12', 0.73)
@@ -167,15 +161,12 @@ def ball_dragon():
 
         if dratini or dragonair:
         #if dratini or dragonair or krabby or tentacool:
-            #config.USE_THREAD_BALL_DRAGON = True
             config_json["USE_THREAD_BALL_DRAGON"] = True
             break
         sleep(1)
 
 def find_elixir():
-    #global FISH_MAGIKARP
     use_elixir = config_json["FISH_MAGIKARP"]
-    #while config_json["FISH_MAGIKARP"]:
     while use_elixir:
         elixir = pyautogui.locateOnScreen(config.elixir_img, confidence=0.9, region=(1382, 879, 36,21))
         if elixir != None:
@@ -215,7 +206,6 @@ def get_pokemon_info():
     return pokemon 
 
 def apply_elixir_mode(use_thread_kill_shiny):
-    #global FISH_MAGIKARP
     original_use_thread_kill_shiny = use_thread_kill_shiny
     use_thread_kill_shiny = True
 
@@ -256,9 +246,7 @@ def apply_elixir_mode(use_thread_kill_shiny):
             sleep(1)
         change_pokemon("Changing pokémon")
         order_pokemon()
-        #order_pokemon_north()
 
-    #config.USE_THREAD_KILL_SHINY = original_use_thread_kill_shiny 
     config_json["USE_THREAD_KILL_SHINY"] = original_use_thread_kill_shiny 
     
     use_bait("Applying bait")
@@ -271,8 +259,6 @@ def check_hook(use_thread_kill_shiny):
     sleep(0.5)
     hook = True
     while hook != None: 
-        # (fishing_position[0], fishing_position[1], fishing_position[0] + config.IMG_BUBBLE_SIZE[0], fishing_position[1] + config.IMG_BUBBLE_SIZE[1])
-        #hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=config_json["FISHING_POSITION"]+config.IMG_HOOK_SIZE)
         hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=(config_json["FISHING_POSITION"][0], config_json["FISHING_POSITION"][1], config_json["FISHING_POSITION"][0] + config.IMG_HOOK_SIZE[0], config_json["FISHING_POSITION"][1] + config.IMG_HOOK_SIZE[1]))
         if hook == None:
             sleep(3)
@@ -290,20 +276,6 @@ def feed_pokemon():
 
 def order_pokemon():
     pyautogui.moveTo(config.POKE_POSITION, duration=0.3)
-    my_keyboard.press('F2')
-    my_keyboard.press('F2')
-    my_keyboard.press('F2')
-    sleep(0.2)
-    my_keyboard.press('F2')
-    sleep(0.3)
-    my_keyboard.press('F2')
-    sleep(0.3)
-    my_keyboard.press('F2')
-    sleep(0.2)
-    my_keyboard.press('tab')
-
-def order_pokemon_north():
-    pyautogui.moveTo(1323, 331, duration=0.3)
     my_keyboard.press('F2')
     my_keyboard.press('F2')
     my_keyboard.press('F2')
@@ -343,11 +315,6 @@ def logout(counter):
         sleep(1)
         keyboard.press_and_release("enter")
 
-#threadKillShiny = threading.Thread(target=kill_shiny, args=(config.KILL_POKEMON_LIST, config.USE_THREAD_KILL_SHINY))
 threadKillShiny = threading.Thread(target=kill_shiny, args=(config.KILL_POKEMON_LIST, config_json["USE_THREAD_KILL_SHINY"]))
-
-#threadSomeActions = threading.Thread(target=some_actions, args=(config_json["USE_THREAD_KILL_SHINY"],))
 threadSomeActions = threading.Thread(target=some_actions, args=(config_json["USE_THREAD_KILL_SHINY"],))
-
-#threadSearchDragon = threading.Thread(target=ball_dragon, args=(config.USE_THREAD_BALL_DRAGON,))
 threadSearchDragon = threading.Thread(target=ball_dragon, args=(config_json["USE_THREAD_BALL_DRAGON"],))

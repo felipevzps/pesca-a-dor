@@ -5,18 +5,11 @@ USE_THREAD_BALL_DRAGON = True        # Set as True/False if do/dont want to proj
 FISH_MAGIKARP = False                # Set as True to activate elixir mode 
 MONEY_MAKER = False                  # For the future - infinite fishing with elixir  
 
-# test
-#FISHING_POSITIONS = (952, 430) 
-#USE_THREAD_KILL_SHINY = False 
-#USE_THREAD_BALL_DRAGON = True
-#FISH_MAGIKARP = False  
-#MONEY_MAKER = False  
-# fim test
-
 #IMG_BUBBLE_SIZE = (25,28)           # bubble.PNG  (1024x768)
 IMG_BUBBLE_SIZE = (26,28)            # bubble1.PNG (1920x1080)
 IMG_HOOK_SIZE = (30, 30)
 REGION_BATTLE = (1714, 383, 206, 323)
+
 # *** 1024x768 ***
 
 #FISHING_POSITIONS = (280, 266)      # pewter bridge

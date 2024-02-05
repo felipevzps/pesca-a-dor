@@ -13,15 +13,15 @@ import threading
 import pynput
 import functions
 
+pyautogui.PAUSE = 0.01
+
 with open("pesca_a_dor/infos.json", "r") as file:
     config_json = json.load(file)
 
-#radiance
 root = ThemedTk(theme="radiance", themebg=True)
 root.iconbitmap(default="images/1024x768/fishing_rod.ico")
 
 root.title("pesca-a-dor")
-#root.geometry("500x500+250+250")
 root.resizable(False, False)
 style = Style()
 style.configure("TButton", font=("Roboto", 10))
@@ -111,7 +111,6 @@ def load():
     with open('pesca_a_dor/infos.json', 'r') as file:
         data = json.loads(file.read())
 
-    #label_fishing_position.configure(text=data["FISHING_POSITION"])
     label_fishing_position.configure(text=f"({data['FISHING_POSITION'][0]}, {data['FISHING_POSITION'][1]})")
     button_kill_shiny.configure(style="ON.TButton" if data["USE_THREAD_KILL_SHINY"] else "OFF.TButton")
     button_elixir.configure(style="ON.TButton" if data["FISH_MAGIKARP"] else "OFF.TButton")
