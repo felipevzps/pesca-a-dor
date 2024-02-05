@@ -1,6 +1,8 @@
 ## pesca-a-dor
 
-Automated fishing in [PxG](https://www.pokexgames.com/). 
+BOT for automated fishing in [PxG](https://www.pokexgames.com/). 
+
+![](images/pesca-a-dor.png)
 
 Features include: `auto fishing`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve minigame` that appears on the screen every ~5 minutes, allowing uninterrupted fishing.
 
