@@ -1,8 +1,17 @@
 # *** GLOBAL VARIABLES ***
 
-USE_THREAD_KILL_SHINY = False        # Set as True/False if do/dont want to use threadKillShiny on main loop
+#USE_THREAD_KILL_SHINY = False        # Set as True/False if do/dont want to use threadKillShiny on main loop
 USE_THREAD_BALL_DRAGON = True        # Set as True/False if do/dont want to project dragonair on main loop
-FISH_MAGIKARP = True                 # Set as True to activate elixir mode 
+FISH_MAGIKARP = False                # Set as True to activate elixir mode 
+MONEY_MAKER = False                  # For the future - infinite fishing with elixir  
+
+# test
+#FISHING_POSITIONS = (952, 430) 
+#USE_THREAD_KILL_SHINY = False 
+#USE_THREAD_BALL_DRAGON = True
+#FISH_MAGIKARP = False  
+#MONEY_MAKER = False  
+# fim test
 
 #IMG_BUBBLE_SIZE = (25,28)           # bubble.PNG  (1024x768)
 IMG_BUBBLE_SIZE = (26,28)            # bubble1.PNG (1920x1080)
@@ -26,7 +35,7 @@ REGION_BATTLE = (1714, 383, 206, 323)
 #FISHING_POSITIONS = (1574, 393)        # pewter-cerulean road (dragonair)
 #FISHING_POSITIONS = (1391, 284)        # pewter-cerulean road (magikarp)
 
-FISHING_POSITIONS = (952, 430)        # vermilion west (dragonair)
+#FISHING_POSITIONS = (952, 430)        # vermilion west (dragonair)
 #FISHING_POSITIONS = (1208, 321)        # hamlin lake
 
 #FISHING_POSITIONS = (1464, 430)        # cerulean CP 
@@ -37,7 +46,8 @@ HUNGRY_POSITION = (1877,244,17,20)
 POKEBALL_POSITION = (1730, 246)      
 #POKE_POSITION = (1337, 404)            # north     
 POKE_POSITION = (1292, 435)            # left 
-# *** IMG PATH ***
+#POKE_POSITION = (1252, 441)            # two left
+# *** IMG PATH *** 
 
 RESOLUTION='1024x768'
 
@@ -65,7 +75,7 @@ battle_img='images/{}/battle.PNG'.format(RESOLUTION)
 # List of tuples containing pokemons to kill_shiny
 KILL_POKEMON_LIST = [
     ("pokémon", shiny_img, 0.9),
-    ("Feebas", feebas_img, 0.9),
+    ("Feebas", feebas_img, 0.85),
     ("Giant Magikarp", giant_karp_img, 0.9),
 ]
 
