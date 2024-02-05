@@ -1,19 +1,21 @@
-<div align="center">
 
-## pesca-a-dor
+<img align="left" width="70" height="70" src="https://github.com/felipevzps/pesca-a-dor/blob/main/images/1024x768/fishing_rod.ico" alt="pesca-a-dor">
 
-  
+# pesca-a-dor
+
 BOT for automated fishing in [PxG](https://www.pokexgames.com/). 
-
 
 ![](images/pesca-a-dor.png)
 
-Features include: `auto fishing`, `cast spells on shiny Pokémon`, `capture shiny Pokémon`, `collect loot`, and `solve minigame` that appears on the screen every ~5 minutes, allowing uninterrupted fishing.
+## Features include:
+* *auto fishing*
+* *cast spells on shiny Pokémon*
+* *capture shiny Pokémon*
+* *collect loot*
+* *solve minigame*
 
-  
+## Minigame
 ![](images/desafio_de_pesca.gif)
-
-</div>
 
 ## Requirements
 
