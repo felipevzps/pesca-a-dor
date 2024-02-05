@@ -26,7 +26,7 @@ pip install opencv-python
 
 ## Usage
 
-Set your monitor resolution to `1024x768` for fast and precise screen coordinates (also works on 1920x1080).
+Set your monitor resolution to `1024x768` for fast and precise screen coordinates (also works on `1920x1080`).
 
 ```python
 FISHING_POSITIONS = (280, 382)              # The location where the bait will be cast
@@ -40,6 +40,8 @@ POKE_POSITION = (410, 242)                  # The position where the Pokémon wi
 >**Note:** Execute [locateOnScreen.py](https://github.com/felipevzps/pesca-a-dor/blob/main/utils/locateOnScreen.py) in VSCode to capture coordinates. Hover your mouse over desired locations while the script runs, like Pokémon's pokéball for `POKEBALL_POSITION`.
 
 After adding coordinates to [config.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca_a_dor/config.py), run [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca_a_dor/pesca-a-dor.py) in VSCode, minimize it, and press `p` in-game to start fishing.
+
+BETA: The graphical interface is under development. Currently, the `FISHING_POSITIONS` can be set through the GUI using the executable. Just press `Fishing Position` and follow the instructions. You can set and update as many `FISHING_POSITIONS` as you want, simply delete the current variable by clicking on the trash icon and then set another one.
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
@@ -160,20 +162,26 @@ The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeAction
 
 ```
 27/04/2023 - 1st night 100% AFK
-04:08 You caught a Pokémon! (Krabby).
-04:08 You've wasted: 144 Ultra Balls and 407 Net Balls to catch it.
-```
-
-```
-23:26 You caught a Pokémon! (Krabby).
-23:26 You've wasted: 200 Net Balls to catch it.
-```
-
-```
-05:47 You caught a Pokémon! (Krabby).
-05:47 You've wasted: 20 Net Balls to catch it.
+04:08 You caught a Pokémon! (Krabby)!
+04:08 You've wasted 144 Ultra Balls and 407 Net Balls to catch it.
 ```
 ```
-00:06 You caught a Pokémon! (Krabby).
-00:06 You've wasted: 499 Net Balls to catch it.
+23:26 You caught a Pokémon! (Krabby)!
+23:26 You've wasted 200 Net Balls to catch it.
+```
+```
+05:47 You caught a Pokémon! (Krabby)!
+05:47 You've wasted 20 Net Balls to catch it.
+```
+```
+00:06 You caught a Pokémon! (Krabby)!
+00:06 You've wasted 499 Net Balls to catch it.
+```
+```
+22:29 You caught a Pokémon! (Krabby)!
+22:29 You've wasted 1 Poke Ball, 6 Ultra Balls and 571 Net Balls to catch it.
+```
+```
+20:57 You caught a Pokémon! (Krabby)!
+20:57 You've wasted 27 Ultra Balls and 31 Net Balls to catch it.
 ```
