@@ -46,7 +46,7 @@ def set_fishing_rod():
 
 def wait_bubble(fishing_position):
     while True:
-        bubble = pyautogui.locateOnScreen(config.bubble_img, confidence=0.7, region=(fishing_position[0], fishing_position[1], fishing_position[0] + config.IMG_BUBBLE_SIZE[0], fishing_position[1] + config.IMG_BUBBLE_SIZE[1]))
+        bubble = pyautogui.locateOnScreen(config.bubble_img, confidence=0.7, region=(fishing_position[0], fishing_position[1], config.IMG_BUBBLE_SIZE[0], config.IMG_BUBBLE_SIZE[1]))
         if bubble != None:
             my_keyboard.press('NUNLOCK')
             break
@@ -134,7 +134,7 @@ def some_actions(use_thread_kill_shiny):
     sleep(0.5)
     check_hook(use_thread_kill_shiny)
     feed_pokemon()
-    my_keyboard.press_ctrl_key('F5', delay=0)
+    my_keyboard.press('scroll')
     my_keyboard.press('tab')
 
 def constant_search_dragon():
@@ -160,10 +160,28 @@ def ball_dragon():
         tentacool = ball_shiny("Shiny Tentacool", config.tentacool_img, 'F11', 0.85)
 
         if dratini or dragonair:
-        #if dratini or dragonair or krabby or tentacool:
             config_json["USE_THREAD_BALL_DRAGON"] = True
             break
         sleep(1)
+
+def ball_normal():
+    while True:
+        normal = pyautogui.locateOnScreen(config.normal_dragonair_img, confidence=0.69)
+        if normal == None:
+            break
+
+        config_json["USE_THREAD_BALL_DRAGON"] = False
+        sleep(0.5)
+
+        #normal_dratini = ball_shiny("Dratini", config.normal_dratini_img, 'F10', 0.73)
+        normal_dragonair = ball_shiny("Dragonair", config.normal_dragonair_img, 'F10', 0.69)
+
+        if normal_dragonair:
+        #if dratini or dragonair or krabby or tentacool:
+            print("Normal pokémon appeared!")
+            config_json["USE_THREAD_BALL_DRAGON"] = True
+            #break
+        sleep(0.5)
 
 def find_elixir():
     use_elixir = config_json["FISH_MAGIKARP"]
@@ -318,3 +336,5 @@ def logout(counter):
 threadKillShiny = threading.Thread(target=kill_shiny, args=(config.KILL_POKEMON_LIST, config_json["USE_THREAD_KILL_SHINY"]))
 threadSomeActions = threading.Thread(target=some_actions, args=(config_json["USE_THREAD_KILL_SHINY"],))
 threadSearchDragon = threading.Thread(target=ball_dragon, args=(config_json["USE_THREAD_BALL_DRAGON"],))
+
+threadSearchNormal = threading.Thread(target=ball_normal, args=(config_json["USE_THREAD_BALL_DRAGON"],))
