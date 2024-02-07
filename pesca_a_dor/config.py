@@ -65,6 +65,9 @@ electabuzz_img='images/{}/electabuzz.PNG'.format(RESOLUTION)
 shedinja_img='images/{}/shedinja.PNG'.format(RESOLUTION)
 battle_img='images/{}/battle.PNG'.format(RESOLUTION)
 
+normal_dratini_img='images/{}/normal_dratini.PNG'.format(RESOLUTION)
+normal_dragonair_img='images/{}/normal_dragonair.PNG'.format(RESOLUTION)
+
 # List of tuples containing pokemons to kill_shiny
 KILL_POKEMON_LIST = [
     ("pokémon", shiny_img, 0.9),
