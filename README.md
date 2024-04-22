@@ -43,7 +43,10 @@ POKE_POSITION = (410, 242)                  # The position where the Pokémon wi
 
 After adding coordinates to [config.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca_a_dor/config.py), run [pesca-a-dor.py](https://github.com/felipevzps/pesca-a-dor/blob/main/pesca_a_dor/pesca-a-dor.py) in VSCode, minimize it, and press `p` in-game to start fishing.
 
-BETA: The graphical interface is under development. Currently, the `FISHING_POSITIONS` can be set through the GUI using the executable. Just press `Fishing Position` and follow the instructions. You can set and update as many `FISHING_POSITIONS` as you want, simply delete the current variable by clicking on the trash icon and then set another one.
+>The `FISHING_POSITIONS` can be set through the GUI using the executable.
+>Just press `Fishing Position` and follow the instructions.
+>
+>You can set and update as many `FISHING_POSITIONS` as you want, simply delete the current variable by clicking on the trash icon and then set another one.
 
 ![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/positions.PNG)
 
@@ -64,23 +67,22 @@ Pokeball for dragonair  = F12
 
 ## Extra
 
-Pesca-a-dor optimizes performance with advanced [multithreading](https://docs.python.org/3.10/library/threading.html#) capabilities.
-
-The `threadKillShiny` manages the `kill_shiny` function, while `threadSomeActions` handles `some_actions`. This parallel approach optimizes the bot's performance, especially when searching for images or executing actions simultaneously, ensuring a more responsive and streamlined experience.
+Pesca-a-dor optimizes performance with [multithreading](https://docs.python.org/3.10/library/threading.html#).
+>This approach optimizes the bot's performance, especially when searching for images or executing actions simultaneously.
 
 ## pesca-a-dor can be used for:
 
 ### Shiny Tentacool / Shiny Krabby project
-- Utilize a Pokémon with a passive ability (e.g., Electabuzz or Scyther for level 100+). Generates logs for events.
+>Requires a Pokémon with passive ability (e.g., Electabuzz, Scyther for level 100+).
 
 ### Shiny Giant Magikarp project and Shiny Magikarp Fin farming
-- A lucrative source of income (approximately 10k for each fin).
+>A lucrative source of income (approximately 10k for each fin).
 
 ### Shiny Dratini / Shiny Dragonair project 
-- Only for high-level fishing characters (fishing 100+)
+>Only for high-level fishing characters (fishing 100+)
 
 ### Leveling up a secondary account
-- Requires a weaker Pokémon to fish, such as a Elekid (level 30+), Shedinja (level 60+).
+>Requires a weaker Pokémon to fish, such as a Elekid (level 30+), Shedinja (level 60+).
 
 ## Statistical analysis of shiny occurrences after puzzle resolution
 
