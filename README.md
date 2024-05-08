@@ -5,14 +5,22 @@
 
 BOT for automated fishing in [PxG](https://www.pokexgames.com/). 
 
-![](images/pesca-a-dor.png)
+![](https://github.com/felipevzps/pesca-a-dor/blob/main/images/pesca-a-dor.gif)
+
 
 ## Features include:
-* *auto fishing*
-* *cast spells on shiny Pokémon*
-* *capture shiny Pokémon*
-* *collect loot*
-* *solve minigame*
+![](images/pesca-a-dor.png)
+
+| Feature            | Description                                                                                                                                                     |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Fishing Position**   | *Set the fishing position for auto fishing*                                                                                                                    |
+| **Kill Shiny**         | *Cast spells on shiny Pokémon*, *capture shiny Pokémon*                                                                                                         |
+| **Fisherman's Elixir**| *Use elixir every 30 minutes*                                                                                                                                 |
+| **Auto Catch Dragonair** | *Use special mode for Shiny Dragonair*                                                                                                                       |
+| **Money Maker**        | **Only works if you have 5 chars with fishing skill 100+.** (This method involves using the fisherman's elixir on one account, then when the elixir's effect wears off, switch to another account and use it again. That way, you've got the elixir effect running 24/7)* |
+| **Solve Minigame**     | *Solve a minigame every ~5 minutes*                                                                                                                                               |
+| **Collect Loot**       | *Collect loot*                                                                                                                                                    |
+
 
 ## Minigame
 ![](images/desafio_de_pesca.gif)
