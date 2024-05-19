@@ -82,17 +82,18 @@ def kill_shiny(pokemon_list, use_thread_kill_shiny):
                 shiny = pyautogui.locateOnScreen(img_path, confidence=confidence, region=config.REGION_BATTLE)
                 if shiny == None:
                     break
+
                 log_message("Wild {} appeared!".format(pokemon_name))
                 sleep(0.1)
                 my_keyboard.press('backspace')  # Use medicine on pokémon
                 sleep(0.1)
-                my_keyboard.press('F7')         # Mamaragan
-                sleep(0.1)
-                my_keyboard.press('F5')         # Electrify
-                sleep(0.1)
-                my_keyboard.press('F4')         # Thunder Wrath
-                sleep(0.1)
-                my_keyboard.press('F6')         # Discharge 
+
+                press_hotkey = config.POKEMON_ATTACK_HOTKEY.get(pokemon_name, [])
+                
+                for key in press_hotkey:
+                    my_keyboard.press(key)
+                    sleep(0.1)
+
                 sleep(0.5)
                 revive()
                 order_pokemon()
@@ -114,6 +115,7 @@ def ball_shiny(pokemon_name, img_path, key, confidence, offset_x=0, offset_y=0):
             pokemon_center = pyautogui.center(pokemon_found)
             if offset_x > 0:
                 pyautogui.moveTo(pokemon_center[0] + offset_x, pokemon_center[1] + offset_y)
+                sleep(0.5)
                 pyautogui.click(button="right")
                 sleep(1)
                 my_keyboard.press("right")
@@ -194,7 +196,8 @@ def find_elixir():
 
 def change_pokemon(message):
     log_message(message)
-    pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.3)
+    pyautogui.moveTo(config.POKEBALL_POSITION, duration=0.5)
+    sleep(0.5)
     pyautogui.click(button="right")
     sleep(1)
     pyautogui.moveTo(1735, 306)
@@ -274,7 +277,7 @@ def apply_elixir_mode(use_thread_kill_shiny):
 def check_hook(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
-    sleep(0.5)
+    sleep(1) # 0.5 - testando 1s para server lagado
     hook = True
     while hook != None: 
         hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=(config_json["FISHING_POSITION"][0], config_json["FISHING_POSITION"][1], config_json["FISHING_POSITION"][0] + config.IMG_HOOK_SIZE[0], config_json["FISHING_POSITION"][1] + config.IMG_HOOK_SIZE[1]))
