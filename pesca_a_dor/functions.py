@@ -277,7 +277,7 @@ def apply_elixir_mode(use_thread_kill_shiny):
 def check_hook(use_thread_kill_shiny):
     if use_thread_kill_shiny and threadKillShiny.is_alive():
         threadKillShiny.join()
-    sleep(1) # 0.5 - testando 1s para server lagado
+    sleep(1)
     hook = True
     while hook != None: 
         hook = pyautogui.locateOnScreen(config.hook_img, confidence=0.5, region=(config_json["FISHING_POSITION"][0], config_json["FISHING_POSITION"][1], config_json["FISHING_POSITION"][0] + config.IMG_HOOK_SIZE[0], config_json["FISHING_POSITION"][1] + config.IMG_HOOK_SIZE[1]))

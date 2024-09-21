@@ -78,8 +78,8 @@ KILL_POKEMON_LIST = [
 # dict containing hotkeys to kill_shiny
 POKEMON_ATTACK_HOTKEY = {
     "pokémon": ['F7', 'F6', 'F4', 'F5'],
-    "Feebas": ['F6', 'F4'],
-    "Giant Magikarp": ['F6', 'F4']
+    "Feebas": ['F7', 'F6', 'F4', 'F5'],
+    "Giant Magikarp": ['F7', 'F6', 'F4', 'F5']
 }
 
 # *** MINIGAME REPEATS ***
